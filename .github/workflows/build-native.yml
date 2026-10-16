@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Unpack ORAYMI
-        run: unzip -q -o ORAYMI_NATIVE_ANDROID_START.zip
+        run: unzip -q -o ORAYMI_NATIVE_ANDROID_START.zip && sed -i 's/fillViewport=true/setFillViewport(true)/' android/app/src/main/java/com/oraymi/nativeapp/MainActivity.kt
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
