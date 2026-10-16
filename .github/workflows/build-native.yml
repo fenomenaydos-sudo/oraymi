@@ -1,0 +1,31 @@
+
+name: ORAYMI Native APK
+on:
+  push:
+    branches: [native-android]
+    paths:
+      - '.github/workflows/build-native.yml'
+      - 'ORAYMI_NATIVE_ANDROID_START.zip'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack ORAYMI
+        run: unzip -q -o ORAYMI_NATIVE_ANDROID_START.zip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Build and test
+        run: cd android && gradle :app:testDebugUnitTest :app:assembleDebug --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ORAYMI-NATIVE-APK
+          path: android/app/build/outputs/apk/debug/*.apk
