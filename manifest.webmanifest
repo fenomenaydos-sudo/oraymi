@@ -1,0 +1,26 @@
+{
+  "name": "ORAYMI 4.0 — BUDDY HOLO",
+  "short_name": "ORAYMI",
+  "description": "Бережный помощник времени с голосовыми командами, хобби, медиатекой и голографическим BUDDY.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090b15",
+  "theme_color": "#090b15",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/oraymi-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/oraymi-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

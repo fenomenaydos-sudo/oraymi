@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10101a">
+<meta name="description" content="ORAYMI — бережный помощник времени: милый BUDDY, таймер, награды, музыка и места рядом.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/oraymi-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ORAYMI">
+<title>ORAYMI 4.0 • BUDDY HOLO</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0c15;--panel:#171824;--panel2:#1d1e2d;--line:#2c2d40;--ink:#f4f1ff;--muted:#9696b4;--mint:#85efd2;--pink:#ed91c2;--orange:#ffc18b;--purple:#b59afd;--blue:#90b7ff;--gray:#8f98af;--radius:24px;--shadow:0 18px 70px #03040d8c}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;background:radial-gradient(ellipse 90% 28% at 50% 0%,#302342 0%,transparent 94%),var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;min-height:100vh;-webkit-tap-highlight-color:transparent}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--mint);outline-offset:3px}a{color:var(--mint)}.app{max-width:600px;margin:auto;padding:24px 18px calc(105px + env(safe-area-inset-bottom))}.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 27px}.logo{font-weight:850;letter-spacing:.18em;font-size:25px;line-height:1}.tag{font-size:10px;letter-spacing:.31em;color:var(--pink);font-weight:750;margin-top:7px}.pill{color:#c2bbdd;font-size:12px;border:1px solid #514362;background:#201b2b;padding:8px 11px;border-radius:100px;white-space:nowrap}.intro{display:flex;align-items:end;justify-content:space-between;gap:10px}.eyebrow{color:var(--mint);font-size:11px;font-weight:800;letter-spacing:.19em;text-transform:uppercase}.page-title{font-size:29px;letter-spacing:-1px;font-weight:750;line-height:1.12;margin:8px 0 3px}.sub{color:var(--muted);font-size:13px;line-height:1.5}.date{font-size:12px;color:#b6adc7}.orbit-wrap{display:grid;place-items:center;margin:21px auto 19px;position:relative}.orbit-glow{width:min(76vw,320px);aspect-ratio:1;position:absolute;border-radius:50%;background:#a16afe17;filter:blur(35px);pointer-events:none}.orbit{position:relative;width:min(76vw,320px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#323248 0 100%);box-shadow:0 0 0 1px #ffffff10,0 25px 55px #0005;transform:rotate(-90deg)}.orbit:before{content:'';position:absolute;inset:15px;border-radius:50%;background:#0e0f1b;box-shadow:inset 0 0 0 1px #2a273c,0 0 0 4px #12101e}.orbit:after{content:'';position:absolute;inset:3px;border-radius:50%;border:1px solid #ffffff18}.orbit-inside{transform:rotate(90deg);text-align:center;position:relative;z-index:2;padding:8px;max-width:76%}.orb-small{font-size:11px;color:#b4adc8;letter-spacing:.15em;text-transform:uppercase;font-weight:750}.orb-time{font-weight:850;font-size:clamp(35px,10vw,49px);letter-spacing:-2px;line-height:1.15;margin:10px 0 4px;font-variant-numeric:tabular-nums}.orb-caption{color:var(--muted);font-size:12px;max-width:185px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.spark{display:inline-block;width:7px;height:7px;background:var(--mint);border-radius:50%;margin-right:5px;box-shadow:0 0 12px var(--mint)}.spark.live{animation:blip 1.5s infinite}@keyframes blip{50%{opacity:.25}}.hero-actions{display:flex;gap:9px;justify-content:center;margin-top:4px}.btn{border:0;border-radius:15px;font-weight:760;padding:14px 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:49px}.btn-primary{background:var(--mint);color:#10281f;box-shadow:0 8px 23px #85efd21e}.btn-primary:active{transform:translateY(1px)}.btn-secondary{background:#25253a;color:#f1edff;border:1px solid #39364b}.btn-danger{background:#452938;color:#ffc6d3;border:1px solid #6b3449}.section{margin-top:30px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.section-title{font-size:16px;font-weight:740;letter-spacing:-.2px}.quiet{font-size:12px;color:var(--muted)}.card{background:linear-gradient(150deg,#1c1c2b,#151622);border:1px solid #343147;border-radius:var(--radius);padding:18px;box-shadow:0 4px 18px #0001}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:23px}.metric{background:#191a28;border:1px solid #2c2b41;border-radius:18px;padding:17px}.metric .val{font-size:23px;font-weight:780;letter-spacing:-1px}.metric .lbl{color:var(--muted);font-size:11px;margin-top:4px}.cat-list{display:flex;flex-direction:column;gap:12px}.catrow{display:flex;align-items:center;gap:12px}.cat-icon{display:grid;place-items:center;width:35px;height:35px;border-radius:12px;background:#242235;font-size:17px}.cat-info{min-width:0;flex:1}.cat-top{display:flex;justify-content:space-between;gap:12px;font-size:13px;margin-bottom:7px}.cat-top .mins{color:#c9c1df;font-variant-numeric:tabular-nums}.bar{height:5px;border-radius:20px;background:#2d2c40;overflow:hidden}.bar i{height:100%;display:block;border-radius:20px}.entry{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #2c2a3c}.entry:last-child{border:0;padding-bottom:2px}.entry:first-child{padding-top:1px}.entry-title{font-size:13px;font-weight:680;overflow-wrap:anywhere}.entry-sub{color:var(--muted);font-size:11px;margin-top:4px}.entry-right{text-align:right;margin-left:auto;min-width:70px}.entry-right b{font-size:13px;white-space:nowrap}.entry-right .entry-sub{white-space:nowrap}.empty{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;padding:23px 5px}.week-grid{display:grid;grid-template-columns:repeat(7,1fr);align-items:end;gap:8px;min-height:173px;padding:8px 0 0}.week-day{display:flex;align-items:center;flex-direction:column;justify-content:end;gap:7px;min-width:0}.week-column{height:126px;display:flex;align-items:end;width:100%;justify-content:center}.week-fill{width:min(100%,32px);background:linear-gradient(0deg,#6d6ccb,#a39bfb);border-radius:9px 9px 3px 3px;min-height:4px}.week-day.today .week-fill{background:linear-gradient(0deg,#40a68e,#85efd2)}.week-lbl{font-size:11px;color:var(--muted)}.week-amt{font-size:10px;color:#ccc4de;white-space:nowrap}.review-label{font-size:12px;color:#c4bdcf;display:block;margin-bottom:9px}.review{width:100%;min-height:90px;resize:vertical;border:1px solid #393548;background:#11121d;color:var(--ink);border-radius:14px;padding:13px;outline:0;font-size:14px}.small-btn{border:1px solid #474056;background:#242234;padding:9px 12px;border-radius:12px;color:#e4dced;font-size:12px}.small-btn:hover{background:#302d40}.hidden{display:none!important}.nav{position:fixed;z-index:8;bottom:0;left:0;right:0;background:#151521e8;backdrop-filter:blur(22px);border-top:1px solid #3d3552;padding:10px max(12px, calc((100vw - 600px)/2)) calc(9px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}.navbtn{border:0;background:transparent;color:#89869d;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;min-width:83px;padding:5px 9px;border-radius:13px}.navbtn .navico{font-size:21px}.navbtn.active{color:var(--mint);background:#28302e}.modal-bg{position:fixed;inset:0;background:#05050bc9;z-index:11;display:flex;align-items:flex-end;justify-content:center;padding:12px}.modal{background:#1d1b2d;border:1px solid #51435e;border-radius:26px 26px 20px 20px;width:100%;max-width:560px;padding:23px 20px calc(22px + env(safe-area-inset-bottom));box-shadow:var(--shadow);max-height:93vh;overflow:auto}.modal-title{font-size:22px;font-weight:800;letter-spacing:-.5px}.modal-sub{font-size:12px;color:var(--muted);margin-top:6px}.field{margin-top:18px}.field label{display:block;font-weight:650;font-size:12px;margin-bottom:8px;color:#d7cfe3}.field input,.field select{width:100%;border:1px solid #4c455b;background:#11121c;padding:14px;border-radius:12px;color:var(--ink);font-size:14px}.field input::placeholder{color:#78728c}.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:17px}.cat-choice{border:1px solid #3c354e;border-radius:13px;background:#262337;color:#d7d0e3;min-height:67px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;font-size:11px}.cat-choice b{font-size:20px}.cat-choice.selected{border-color:var(--mint);color:var(--mint);background:#243632}.modal-actions{display:flex;gap:8px;margin-top:24px}.modal-actions .btn{flex:1}.note{color:var(--muted);font-size:12px;line-height:1.6}.note strong{color:#d5ccec}.setting{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #343044;padding:17px 0}.setting:first-child{padding-top:0}.setting:last-child{border-bottom:none;padding-bottom:0}.setting-title{font-size:13px;font-weight:690}.setting-sub{font-size:11px;color:var(--muted);margin-top:5px;max-width:300px}.setting select{border-radius:10px;color:#e8dff7;background:#292539;border:1px solid #4d435b;padding:8px}.toast{position:fixed;z-index:20;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));transform:translateX(-50%);color:#101820;background:#d5f8ec;border-radius:13px;padding:12px 16px;box-shadow:var(--shadow);font-size:12px;font-weight:700;max-width:90vw;text-align:center}.credit{text-align:center;font-size:11px;color:#6d6880;margin-top:25px}.dotline{height:1px;background:linear-gradient(90deg,transparent,#594b66,transparent);margin:25px 0 0}.danger-link{color:#ffa8ba;border-color:#694155}.page{display:none}.page.active{display:block}@media(min-width:700px){.app{padding-top:35px}.modal-bg{align-items:center}.modal{border-radius:26px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+
+/* ORAYMI 1.5 — signature interface */
+:root{--glass:rgba(35,33,57,.8);--secondary-accent:#a999fa}
+body{background:radial-gradient(ellipse 94% 30% at 80% -5%,#53306d80 0%,transparent 85%),radial-gradient(ellipse 55% 25% at 0 28%,#14483c34,transparent 90%),#0b0c15;background-attachment:fixed}
+body:before{content:"";pointer-events:none;position:fixed;inset:0;background-image:radial-gradient(#ffffff75 .8px,transparent 1.1px);background-size:47px 49px;mask-image:linear-gradient(180deg,#0004,transparent 48%);z-index:0;opacity:.5}
+.app{position:relative;z-index:1}.header{margin-bottom:18px}.logo{font-size:27px}.pill{color:#dccdff;border-color:#564a74}
+.buddy{display:flex;align-items:center;gap:13px;padding:13px 14px;background:linear-gradient(120deg,#26203bfa,#14282aeb);border:1px solid #564b71;border-radius:21px;margin-bottom:23px;box-shadow:0 14px 45px #07061055;position:relative;overflow:hidden}
+.buddy:after{content:"✧";position:absolute;right:14px;top:0;color:#ffffff25;font-size:55px;pointer-events:none}
+.buddy-face{width:53px;height:53px;flex:none;border-radius:19px;background:radial-gradient(circle at 30% 20%,#aafbe7,#49bfa9);display:grid;place-items:center;box-shadow:0 0 18px #83efd272, inset -6px -7px 14px #0f654d50;position:relative;animation:bob 4s ease-in-out infinite}
+.buddy-face:before,.buddy-face:after{content:'';position:absolute;top:22px;width:6px;height:8px;background:#153631;border-radius:60%}.buddy-face:before{left:17px}.buddy-face:after{right:17px}
+.buddy-smile{position:absolute;top:31px;left:22px;width:10px;height:6px;border-bottom:2px solid #153631;border-radius:0 0 100px 100px}
+.buddy-copy{min-width:0;flex:1}.buddy-label{font-size:9px;font-weight:850;letter-spacing:.16em;color:#8ef8d8}.buddy-msg{margin-top:4px;font-weight:600;font-size:12px;color:#f0eafa;line-height:1.42}.buddy-tip{flex:none;border:1px solid #587466;background:#2a443b;color:#c4ffee;font-weight:800;border-radius:12px;min-height:40px;padding:0 11px;font-size:11px;position:relative;z-index:1}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-5px) rotate(3deg)}}
+.orbit{box-shadow:0 0 0 1px #ffffff12,0 0 40px #7663dc33,0 26px 67px #0008;transition:background 400ms}
+.orbit-glow{background:#ae86fe20;filter:blur(46px)}.orb-time{font-size:clamp(36px,10vw,52px)}
+.hero-actions .btn-primary{background:linear-gradient(125deg,#89ffe0,#67d6bd)}
+.quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:12px}
+.quick-card{background:linear-gradient(153deg,#28233b,#171b28);border:1px solid #4a405c;border-radius:18px;min-height:95px;padding:13px 4px;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:7px;color:#e8e3f2;text-align:center;box-shadow:0 8px 18px #07060c2b;transition:transform .15s,border-color .15s}
+.quick-card:active{transform:scale(.97)}.quick-card:focus-visible{outline:2px solid var(--mint)}.quick-emoji{font-size:26px}.quick-title{font-size:11px;font-weight:800}.quick-min{font-size:9px;color:#aca3bd}
+.feature-panel{padding:20px;background:linear-gradient(135deg,#27213c,#192a30 100%);border:1px solid #554c71;border-radius:22px;box-shadow:0 10px 35px #07050c55}
+.progress-meta{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:12px}.progress-meta b{font-size:23px;letter-spacing:-.8px}.progress-meta small{font-size:11px;color:#d4bfff}.goal-track{height:11px;background:#39324f;border-radius:30px;margin:15px 0 9px;overflow:hidden}.goal-fill{height:100%;width:0%;border-radius:30px;background:linear-gradient(90deg,#6bcab4,#c6a5fa);box-shadow:0 0 12px #7eedcb77;transition:width .5s}.goal-note{font-size:11px;color:#c5bcd5;line-height:1.4}
+.level-row{display:flex;gap:9px;margin-top:12px;align-items:center}.level-chip{color:#172522;background:#aaf5dc;font-size:11px;border-radius:100px;padding:7px 11px;font-weight:850;white-space:nowrap}.xp-meter{height:6px;border-radius:7px;background:#383344;flex:1;overflow:hidden}.xp-meter i{height:100%;display:block;background:linear-gradient(90deg,#de91d5,#ad9cf9);border-radius:8px;transition:width .4s}.level-xp{font-size:10px;color:#beb5d2;white-space:nowrap}
+.quest-list{display:grid;gap:9px}.quest{display:flex;align-items:center;gap:12px;padding:12px 13px;border-radius:15px;background:#1c1a2b;border:1px solid #332f49}.quest.done{background:#1a3030;border-color:#335e55}.quest-mark{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:#2d2741;font-size:18px;flex:none}.quest.done .quest-mark{background:#30594d}.quest-text{flex:1;min-width:0}.quest-name{font-size:12px;font-weight:780}.quest-detail{font-size:10px;color:var(--muted);margin-top:4px}.quest-reward{color:#f3cda4;font-size:11px;font-weight:850}
+.section-kicker{font-size:10px;font-weight:820;letter-spacing:.2em;color:var(--purple);margin:20px 0 4px}.metric{position:relative;overflow:hidden}.metric .val{font-size:25px}.metric:nth-child(1):before{content:'✧';position:absolute;right:15px;top:6px;color:#ffffff15;font-size:30px}
+.mood-options{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:13px}.mood-btn{background:#262337;border:1px solid #3d354f;color:#f7edff;border-radius:14px;padding:10px 3px;min-height:64px;display:flex;flex-direction:column;gap:4px;align-items:center;font-size:10px}.mood-btn span{font-size:26px}.mood-btn.selected{background:#23423b;border-color:#88f5d4;box-shadow:inset 0 0 12px #83eacf19}.mood-caption{font-size:12px;color:#b8accb;margin-top:7px;min-height:17px}
+.badge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.award{border:1px solid #413a51;background:#1b1a28;padding:16px 12px;border-radius:17px;text-align:center;min-height:144px}.award-icon{font-size:29px;filter:grayscale(1);opacity:.35}.award.unlocked{background:linear-gradient(145deg,#292339,#213431);border-color:#766194}.award.unlocked .award-icon{opacity:1;filter:none}.award-name{font-weight:760;font-size:12px;margin-top:9px}.award-hint{color:#9e98b2;font-size:10px;line-height:1.45;margin-top:5px}
+.theme-picks{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.theme-pick{flex:1;min-width:80px;border-radius:12px;background:#29263d;border:1px solid #514863;padding:12px 6px;color:#eee6fa;font-size:12px}.theme-pick[aria-pressed="true"]{border-color:var(--mint);box-shadow:inset 0 0 0 1px var(--mint);background:#273d39}
+.setting input[type=number]{border:1px solid #565069;background:#211f2d;border-radius:10px;padding:10px;color:#f8f2ff;width:79px;text-align:center}
+.entry-del{background:transparent;border:0;color:#a79eb9;font-size:15px;padding:6px 0 0 12px;vertical-align:middle}
+body[data-theme="sunset"]{--mint:#ffc69a;--pink:#f7aab8;--purple:#d0a7ed;--glass:#3b2834;background:radial-gradient(ellipse at 75% 0%,#573348 0%,transparent 62%),#100d17}
+body[data-theme="sunset"] .btn-primary{background:linear-gradient(125deg,#ffcb96,#f4a6bc);color:#321e29}body[data-theme="sunset"] .buddy-face{background:radial-gradient(circle at 25% 25%,#ffe0af,#eda0b2)}
+body[data-theme="forest"]{--mint:#a4e9b9;--purple:#a2deb5;--pink:#c8c99c;background:radial-gradient(ellipse at 75% 0%,#254d3e 0%,transparent 63%),#091410}
+body[data-theme="forest"] .btn-primary{background:linear-gradient(125deg,#c1f5c7,#7ed6b1)}
+@media(max-width:390px){.app{padding-inline:15px}.quick-grid{gap:6px}.quick-card{min-height:88px}.quick-title{font-size:10px}.buddy{gap:9px}.buddy-tip{padding:0 8px;font-size:10px}.navbtn{min-width:0;flex:1;padding-inline:3px}.navbtn .navico{font-size:19px}}
+
+
+/* ORAYMI 2.0 — stopwatch clarity, compact hero and personal daily plan */
+.orbit{width:min(69vw,286px)}.orbit:before{inset:13px}.orbit-wrap{margin:15px auto 14px}.orbit-glow{width:min(70vw,288px)}
+.orb-time{font-size:clamp(30px,8.8vw,44px);font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-1.7px}
+.live-status{display:inline-flex;align-items:center;gap:6px;justify-content:center;margin-top:11px;padding:6px 9px;border-radius:30px;border:1px solid #315f53;background:#1a3730a8;color:#a7ffe1;font-size:9px;font-weight:800;letter-spacing:.05em}
+.status-dot{display:inline-block;width:7px;height:7px;background:#70f7b6;box-shadow:0 0 10px #70f7b6;border-radius:100%;animation:blip 1.5s infinite}
+.live-status.paused{background:#43312190;border-color:#846041;color:#ffe0a5}.live-status.paused .status-dot{background:#ffbc74;box-shadow:0 0 10px #ffa95c;animation:none}
+.hero-actions{gap:7px;flex-wrap:wrap}.hero-actions .btn{padding:12px 13px;flex:1;white-space:nowrap;font-size:12px}.timer-help{text-align:center;font-size:10px;color:#a7a0bb;margin:10px 7px 4px;line-height:1.5}
+.quick-card:disabled{opacity:.46;filter:saturate(.55);cursor:not-allowed}.plan-card{padding:14px}.tasks-list{display:grid;gap:8px}.task-item{display:flex;align-items:center;gap:10px;background:#262337;border:1px solid #3b3750;border-radius:13px;padding:9px 8px}.task-toggle{flex:none;border:1px solid #77718b;border-radius:9px;width:29px;height:29px;color:#ddd3ee;background:#1d1d2e;font-weight:800;font-size:14px}.task-item.done .task-toggle{background:#8ef5d8;color:#1d3730;border-color:#8ef5d8}.task-title{flex:1;min-width:0;font-size:12px;font-weight:650;overflow-wrap:anywhere}.task-item.done .task-title{text-decoration:line-through;color:#a49ead}.task-delete{border:0;background:transparent;color:#b2a7c5;min-height:33px;min-width:33px;font-size:18px}.task-entry{display:flex;gap:8px;margin-top:10px}.task-entry input{flex:1;width:100%;min-width:0;border:1px solid #49415c;background:#141522;color:var(--ink);padding:11px 12px;border-radius:13px;font-size:12px}.task-entry .btn{padding:8px 14px;min-width:44px;min-height:42px;font-size:20px}.task-hint{font-size:10px;color:#aaa2bb;line-height:1.5;margin-top:11px}.task-empty{font-size:11px;color:#aaa5ba;padding:8px 2px 3px;line-height:1.5}
+@media(max-width:390px){.hero-actions .btn{padding:12px 10px}.orbit{width:min(71vw,270px)}}
+
+/* ORAYMI v3 personality & destinations. Existing tracker styles retained. */
+body:has(.page:not(#page-today).active) #v3-install{display:none}
+:root{--bloom:#82f4d0} .app{max-width:760px}body{background:radial-gradient(ellipse 100% 23% at 50% -4%,#322a54 0%,transparent 94%),radial-gradient(ellipse 58% 18% at 100% 30%,#112f37 0%,transparent 95%),var(--bg)}
+.buddy{position:relative;overflow:hidden;align-items:center;border:1px solid #6e638b80;background:linear-gradient(130deg,#29233ddc,#13282bdc);margin-top:8px;margin-bottom:15px;box-shadow:0 15px 60px #15111f50;padding:16px 15px;min-height:118px}
+.buddy:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 14% 80%,#96ffc42b,transparent 41%);pointer-events:none}
+.buddy-face{position:relative;width:88px;height:88px;flex:0 0 88px;background:linear-gradient(135deg,#a5ffe4,#43c2b8);border-radius:34% 37% 39% 38%;box-shadow:inset -9px -10px 23px #167c817c,0 0 31px #51dfb568;animation:floatie 3.3s ease-in-out infinite;transform-origin:50% 80%;transition:background .3s}
+.buddy-face:before,.buddy-face:after{content:'';position:absolute;top:33px;width:8px;height:12px;border-radius:100%;background:#153337;animation:blink 7s ease-in-out infinite}.buddy-face:before{left:26px}.buddy-face:after{right:26px}
+.buddy-smile{position:absolute;left:37px;top:51px;width:15px;height:9px;border-bottom:3px solid #153337;border-radius:0 0 100% 100%;display:block}
+@keyframes floatie{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes blink{0%,91%,95%,100%{transform:scaleY(1)}93%{transform:scaleY(.08)}}
+@media(prefers-reduced-motion:reduce){.buddy-face,.buddy-face:before,.buddy-face:after{animation:none!important}}
+.buddy-face[data-outfit="moon"]{background:linear-gradient(135deg,#dfd0ff,#9676ef)}.buddy-face[data-outfit="sun"]{background:linear-gradient(135deg,#ffebbd,#ffae86)}.buddy-face[data-outfit="forest"]{background:linear-gradient(135deg,#c5ffb3,#5cda9e)}
+.buddy-face[data-outfit="moon"]:before{box-shadow:-7px -22px 0 -1px #fff5}.buddy-face[data-outfit="sun"]:after{box-shadow:7px -20px 0 -1px #ffda72}.buddy-face[data-outfit="forest"]:before{box-shadow:-3px -21px 0 -1px #d8ffa3}
+.buddy-copy{position:relative;z-index:1;min-width:0}.buddy-label{font-size:11px;letter-spacing:.13em}.buddy-msg{font-size:15px;line-height:1.45}.buddy-tip{position:relative;z-index:1;flex-shrink:0;font-size:11px;padding:10px 11px}
+.buddy-actionline{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
+.micro{background:#272538;border:1px solid #454056;border-radius:14px;color:#ddd5f5;padding:11px 13px;font-size:12px;min-height:42px}
+.micro:active,.micro[aria-pressed="true"]{background:#32544d;border-color:#7fe6d1;color:#aafce5}
+.buddy-memory{background:#141924;border:1px solid #384e4a;border-radius:21px;padding:18px;margin-bottom:20px;display:grid;gap:14px}
+.daily-quote{font-size:18px;line-height:1.45;font-weight:740;letter-spacing:-.02em;color:#f3edff}.quote-credit{font-size:12px;color:#7fe2cb;letter-spacing:.11em;margin-top:7px}
+.quote-actions{display:flex;gap:9px;flex-wrap:wrap}.soft-btn{border:1px solid #424357;background:#232538;border-radius:14px;color:#ded9ef;padding:11px 14px;min-height:44px;font-size:12px}
+.compass-link{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(110deg,#242342,#1e3538);border:1px solid #5e6377;border-radius:20px;color:#e3fff1;padding:16px;text-decoration:none;margin-bottom:21px;gap:12px}.compass-link small{color:#a8b8b7;display:block;margin-top:4px}
+.install-banner{background:#25382f;border:1px solid #588a74;border-radius:20px;padding:15px;margin-bottom:16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.install-banner p{color:#b2d4ca;font-size:12px;margin:7px 0 0}.install-banner button{font-size:12px}
+.world-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.world-card{background:#1b2030;border:1px solid #383d51;border-radius:20px;padding:16px;min-height:123px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:8px;color:#f1edf9}.world-card b{font-size:15px}.world-card span{font-size:12px;color:#b4aec8;line-height:1.4}.world-icon{font-size:28px}.world-card:focus-visible{outline:2px solid var(--mint)}
+.v3-panel{padding:19px;border-radius:23px;background:linear-gradient(135deg,#1f2234,#192631);border:1px solid #44435e;margin-top:14px}
+.v3-panel h3{font-size:19px;margin:0 0 9px}.v3-panel p{font-size:13px;line-height:1.55;color:#b9b5ca}.v3-input{width:100%;min-height:48px;border-radius:14px;border:1px solid #504e66;background:#121521;color:#f6f2ff;padding:13px;margin:10px 0;font-size:13px}.v3-action{min-height:46px;border:none;border-radius:15px;background:#8ff2d4;color:#142e31;font-weight:770;padding:12px 15px}.v3-action:disabled{opacity:.4}
+.playerbox{margin-top:14px}.playerbox iframe{width:100%;border:0;border-radius:15px;background:#12121c;min-height:152px}.playerbox iframe.youtube{aspect-ratio:16/9;min-height:190px}
+.privacy-note{margin-top:9px;color:#9da1ba;font-size:12px;line-height:1.6}
+.near-results{margin-top:13px;display:grid;gap:9px}.near-venue{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid #484b5f;border-radius:15px;text-decoration:none;color:#f0eaff;gap:14px;background:#171e2b}.near-venue small{display:block;color:#a4c2b7;margin-top:3px}.near-venue span{color:#95e8d0;font-size:13px}
+.reward-shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.reward-item{background:#24243a;border:1px solid #49465a;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:7px;min-height:156px}.reward-item.locked{opacity:.64}.reward-item .reward-emoji{font-size:26px}.reward-item b{font-size:14px}.reward-item span{font-size:11px;color:#b7b1cb}.reward-item button{margin-top:auto;background:#305b51;color:#abffdf;border:1px solid #4b8077;border-radius:12px;padding:9px;font-size:12px;min-height:36px}.reward-item button:disabled{opacity:.55}
+.mood-check{display:flex;gap:9px;flex-wrap:wrap}.mood-check button{flex:1;min-width:72px;border:1px solid #47455b;background:#2a293d;color:#f1ecff;border-radius:13px;padding:11px 4px;min-height:44px;font-size:12px}
+.mood-check button.selected{background:#314940;border-color:#8fead0}
+.partner-placeholder{border:1px dashed #4e5363;border-radius:16px;padding:16px;text-align:center;color:#adafc6;line-height:1.6;font-size:13px}
+.tiny-switch{display:flex;align-items:center;gap:12px;font-size:13px}.tiny-switch input{width:19px;height:19px;accent-color:#7de9c9}
+.nav{gap:0!important}.navbtn{min-width:0!important;font-size:11px!important;padding-inline:3px!important}.navico{font-size:20px!important}
+@media(max-width:450px){.buddy-face{width:72px;height:72px;flex-basis:72px}.buddy-face:before,.buddy-face:after{top:27px}.buddy-face:before{left:21px}.buddy-face:after{right:21px}.buddy-smile{left:30px;top:43px}.buddy-msg{font-size:13px}.buddy-tip{padding:8px}.daily-quote{font-size:17px}.navbtn{font-size:10px!important}.world-grid{gap:9px}}
+@media(max-width:360px){.buddy{padding:11px}.buddy-face{width:60px;height:60px;flex-basis:60px}.buddy-face:before,.buddy-face:after{top:23px;width:7px;height:10px}.buddy-face:before{left:16px}.buddy-face:after{right:16px}.buddy-smile{left:25px;top:35px}.navbtn{letter-spacing:-.03em}}
+
+/* ORAYMI 4.0 | AURORA HOLOGRAPHIC INTERFACE */
+:root{--bg:#070a13;--ink:#f9f7ff;--muted:#b0abc9;--mint:#9afadf;--purple:#bca8ff;--radius:25px}
+body{background:radial-gradient(ellipse 95% 32% at 50% -8%,#39244f 0%,transparent 87%),radial-gradient(ellipse 80% 28% at 100% 41%,#0a3c46 0%,transparent 98%),#090b15;background-attachment:fixed}
+.app{max-width:780px;padding-top:20px}.logo{font-size:27px;letter-spacing:.18em}.tag{color:#94efdc;letter-spacing:.27em}.pill{border:1px solid #69748d;background:linear-gradient(110deg,#283445,#252040);color:#c9ffed;font-weight:700}
+.buddy{margin-top:4px;padding:22px 17px;min-height:164px;border-radius:29px;border:1px solid #84f3da85;background:radial-gradient(circle at 17% 53%,#2f7d8070 0%,transparent 40%),linear-gradient(115deg,#211b40,#0f2430 68%,#172342);box-shadow:inset 0 1px #dcfff345,0 0 36px #42dbc223,0 19px 65px #05090d80;isolation:isolate}
+.buddy:after{content:'';position:absolute;inset:5px;border:1px solid #c8fff022;border-radius:25px;pointer-events:none}
+.v4-holo-ring{position:absolute;left:15px;top:50%;width:134px;height:134px;border:1px solid #82f7e484;border-radius:50%;transform:translateY(-50%) rotateX(63deg);box-shadow:0 0 30px #7efbe655,inset 0 0 19px #94ffdc45;pointer-events:none;z-index:0;animation:v4hover 5.5s ease-in-out infinite}
+.v4-holo-ring:after{content:'';position:absolute;inset:15px;border:2px dashed #b79dffba;border-radius:50%}
+.buddy-face{width:106px;height:106px;flex-basis:106px;border-radius:43% 43% 44% 44%;background:radial-gradient(circle at 35% 25%,#d1fff2,#7cf4dd 51%,#2eb8b6);box-shadow:0 0 42px #5bffe087, inset -10px -8px 24px #3c8e9880;filter:drop-shadow(0 0 10px #5cffdc55);z-index:1}
+.buddy-face:before,.buddy-face:after{top:41px}.buddy-face:before{left:31px}.buddy-face:after{right:31px}.buddy-smile{left:45px;top:64px}.buddy-copy{flex:1}.buddy-label{color:#a3ffdc;font-size:10px;letter-spacing:.2em}.buddy-msg{font-size:16px;line-height:1.47;color:#f5f5ff}.buddy-tip{background:#2b4148;border:1px solid #628982;padding:10px 12px}.buddy-actionline{margin-top:12px}
+@keyframes v4hover{0%,100%{opacity:.75;transform:translateY(-50%) rotateX(63deg) rotate(0deg)}50%{opacity:1;transform:translateY(-50%) rotateX(63deg) rotate(14deg)}}
+.v4-command-deck,.v4-pane{position:relative;border:1px solid #455b68;border-radius:24px;padding:17px;background:linear-gradient(145deg,#171c2ce8,#101c28ee);box-shadow:inset 0 1px #ffffff0e,0 15px 50px #00000028}
+.v4-command-deck{margin:12px 0 16px;border-color:#6a4f8d;background:linear-gradient(135deg,#22203b 0%,#121e2a 86%)}
+.v4-command-top{display:flex;gap:10px;justify-content:space-between;align-items:start}.v4-eyebrow{color:#a2f7e0;font-size:10px;letter-spacing:.19em;font-weight:850}.v4-command-title{font-size:17px;font-weight:790;margin-top:5px;letter-spacing:-.3px}.v4-state{font-size:10px;color:#baa9d9;background:#33304c;padding:8px;border-radius:20px;max-width:130px;text-align:right}.v4-state.listening{color:#baffeb;background:#236657;box-shadow:0 0 18px #3ee4c955}
+.v4-command-form{display:flex;align-items:center;gap:8px;background:#0c1221;border:1px solid #514a71;border-radius:18px;padding:6px;margin-top:14px}
+.v4-command-form input{flex:1;min-width:0;border:0;background:transparent;color:#f6f5ff;outline:0;padding:10px 2px;font-size:12px}.v4-command-form input::placeholder{color:#9393ae}
+.v4-mic{width:44px;height:44px;flex:0 0 44px;border-radius:13px;border:1px solid #71cebc;background:linear-gradient(145deg,#347869,#244e59);color:white;font-size:20px}.v4-mic.listening{animation:pulse-mic .9s infinite alternate;box-shadow:0 0 22px #7af6c998}.v4-send{width:40px;height:40px;border-radius:13px;background:#8af5d5;border:0;font-weight:850;color:#17392f;font-size:24px}
+@keyframes pulse-mic{to{transform:scale(1.07)}}.v4-chips{display:flex;overflow-x:auto;gap:7px;margin:12px -1px;scrollbar-width:none}.v4-chips button{border:1px solid #4c4966;background:#302b49;color:#e9e0f9;border-radius:100px;padding:9px 12px;white-space:nowrap;font-size:11px;min-height:35px}
+.v4-answer{padding:12px;background:#15192bd9;border-left:2px solid #a5f4dd;border-radius:9px;font-size:12px;line-height:1.6;color:#e2daf9;min-height:61px}.v4-smallnote{color:#999bb5;font-size:10px;line-height:1.65;margin-top:11px}.v4-intro-copy{color:#b9bad3;font-size:12px;line-height:1.6;margin:4px 0 13px}
+.v4-hobby-list,.v4-media-list{display:grid;gap:9px}.v4-hobby-item,.v4-media-item{display:flex;align-items:center;gap:9px;background:#21283a;border:1px solid #414c62;border-radius:14px;padding:10px}.v4-hobby-title,.v4-media-name{flex:1;min-width:0;font-size:12px;font-weight:740;overflow-wrap:anywhere}.v4-hobby-title small,.v4-media-name small{display:block;color:#a6a9bf;font-size:10px;font-weight:400;margin-top:3px}.v4-hobby-start,.v4-media-play{color:#092b24;background:#92efd6;border:0;border-radius:11px;padding:9px 11px;font-weight:750;font-size:11px}.v4-del{background:transparent;color:#c9aab4;border:0;font-size:19px;padding:7px;min-width:28px}
+.v4-hobby-form,.v4-media-form{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.v4-hobby-form input,.v4-hobby-form select,.v4-media-form input{flex:1;min-width:110px;border:1px solid #4c5069;background:#101724;border-radius:12px;padding:12px;color:#faf8ff;font-size:12px}.v4-hobby-form select{flex:0 0 109px;min-width:0}.v4-add{background:linear-gradient(130deg,#bdadff,#8be5d1);color:#152735;font-weight:800;border:0;border-radius:12px;padding:11px 14px;font-size:12px;min-height:44px}.v4-suggestions{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.v4-suggestions button{color:#c8c0e9;border:1px solid #3f435c;border-radius:20px;background:#22283a;font-size:10px;padding:8px 10px}
+.v4-media-form input:first-child{flex:1 1 100%}.v4-media-form input:nth-child(2){flex:1 1 60%}.v4-accounts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.v4-accounts a{flex:1;text-align:center;text-decoration:none;padding:11px 10px;border-radius:13px;background:#282b43;border:1px solid #5d5778;color:#c7fce9;font-size:11px;font-weight:740}.v4-media-provider{font-size:20px}.v4-empty{font-size:11px;color:#a7abc3;text-align:center;padding:14px 8px;border:1px dashed #3b4660;border-radius:12px}
+.v4-setting-line{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px;padding-top:14px;border-top:1px solid #3b4057;font-size:12px}.v4-setting-line span{display:flex;flex-direction:column;gap:4px}.v4-setting-line small{color:#a5a9bb;line-height:1.5}.v4-setting-line input{accent-color:#8ef4d5;width:22px;height:22px;flex:0 0 22px}
+.v4-sponsored{border:1px solid #343a52;border-radius:16px;background:#1a1c2c}.v4-sponsored>summary{padding:14px 17px;font-size:12px;color:#b6bad0;cursor:pointer;list-style:none}.v4-sponsored>summary:after{content:'＋';float:right}.v4-sponsored[open]>summary:after{content:'−'}.v4-sponsored .v3-panel{margin:0;border:0;border-radius:0 0 16px 16px;background:#1b2232}
+body.v4-focus-on .buddy-memory,body.v4-focus-on .compass-link,body.v4-focus-on .v4-hobby-section,body.v4-focus-on .buddy-actionline{display:none!important}
+body.v4-focus-on .v4-command-deck{margin-top:9px}body.v4-focus-on .orbit{filter:drop-shadow(0 0 13px #8cf6d12e)}
+.buddy-memory{background:linear-gradient(125deg,#191f30,#182a2d);border:1px solid #416d65}.orbit{box-shadow:0 0 21px #9afbdb30,0 0 0 1px #ffffff17}.orbit:after{border-color:#b4ffec26}.v3-panel{border-color:#35485c}.nav{background:#0f1427ed;border-top:1px solid #3e4e69}
+@media(max-width:450px){.buddy{min-height:140px;padding:14px 12px;gap:12px}.buddy-face{width:80px;height:80px;flex-basis:80px}.buddy-face:before,.buddy-face:after{top:30px}.buddy-face:before{left:23px}.buddy-face:after{right:23px}.buddy-smile{left:33px;top:49px}.v4-holo-ring{width:103px;height:103px;left:5px}.buddy-msg{font-size:13px}.buddy-tip{padding:8px;font-size:10px}.v4-command-title{font-size:15px}.v4-state{font-size:9px}.v4-pane,.v4-command-deck{padding:14px}.v4-hobby-form input{flex:1 1 calc(100% - 134px)}.v4-hobby-form button{flex:1 1 100%}}
+@media(max-width:370px){.buddy-tip{display:none}.buddy-msg{font-size:13px}.v4-hobby-form select{flex:1 1 45%}.v4-hobby-form input{flex:1 1 45%}}
+@media(prefers-reduced-motion:reduce){.v4-holo-ring,.v4-mic.listening{animation:none!important}}
+
+
+/* V4 finishing: timer-first, expandable commands and less UI noise */
+.v4-command-deck{margin-bottom:14px}.v4-expand{background:#2c3651;border:1px solid #4b6b74;border-radius:12px;color:#c8ffeb;font-size:11px;white-space:nowrap;padding:10px;min-height:38px}
+.v4-command-deck .v4-state{margin-top:8px;width:fit-content;max-width:100%;padding:5px 9px}.v4-command-deck.compact .v4-chips,.v4-command-deck.compact .v4-answer,.v4-command-deck.compact .v4-smallnote{display:none}
+.v4-command-deck.compact .v4-command-form{margin-top:8px}
+#page-today>.intro{margin-top:9px}#page-today>.buddy-memory{margin-top:23px}.v4-hobby-section{margin-top:22px}
+#page-settings .install-banner{margin:22px 0 0}
+@media(max-width:450px){.v4-command-deck .v4-state{font-size:9px}.v4-command-deck.compact{padding-bottom:12px}.v4-expand{font-size:10px;padding:8px}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header"><div><div class="logo">ORAYMI<span style="color:var(--mint)">.</span></div><div class="tag">MAKE TIME YOURS</div></div><span class="pill">✦ BUDDY / 4.0</span></header>
+  <aside class="buddy" aria-live="polite"><div class="v4-holo-ring" aria-hidden="true"></div><div class="buddy-face" aria-hidden="true"><span class="buddy-smile"></span></div><div class="buddy-copy"><div class="buddy-label">✦ ORAYMI BUDDY</div><div class="buddy-msg" id="buddy-message">Привет! Начнём с одного маленького шага?</div></div><button class="buddy-tip" id="buddy-tip" type="button">Совет ✨</button></aside>
+  <div class="buddy-actionline" role="group" aria-label="Поддержка от BUDDY">
+<button class="micro" id="buddy-kind" type="button">🤍 Мне тяжело</button>
+<button class="micro" id="buddy-motivate" type="button">🌱 Нужен маленький шаг</button>
+<button class="micro" id="buddy-play" type="button">🎵 Музыка</button></div>
+<section class="v4-command-deck compact" aria-label="Голосовой помощник BUDDY">
+ <div class="v4-command-top"><div><div class="v4-eyebrow">✧ BUDDY · ГОЛОС И ПОМОЩЬ</div><div class="v4-command-title">Просто скажи, что нужно</div></div><button class="v4-expand" id="v4-expand" type="button" aria-expanded="false">⋯ Команды</button></div>
+ <div class="v4-state" id="v4-voice-state">○ Микрофон выключен</div><form id="v4-command-form" class="v4-command-form"><button type="button" id="v4-mic" class="v4-mic" aria-label="Сказать голосовую команду" title="Нажми для голосового ввода">🎙</button><input id="v4-command" type="text" maxlength="180" placeholder="Например: пауза, фокус, как я сегодня?" autocomplete="off" aria-label="Команда для BUDDY"><button type="submit" class="v4-send" aria-label="Отправить команду">↗</button></form>
+ <div class="v4-chips" role="group" aria-label="Быстрые команды"><button data-v4-cmd="Пауза" type="button">Ⅱ Пауза</button><button data-v4-cmd="Продолжить" type="button">▶ Продолжить</button><button data-v4-cmd="Завершить" type="button">■ Завершить</button><button data-v4-cmd="Как мой день?" type="button">✧ Мой день</button></div>
+ <div id="v4-answer" class="v4-answer" aria-live="polite">Привет! Я могу управлять твоим таймером и помочь выбрать следующий шаг. Для голосовой команды нажми 🎙.</div>
+ <div class="v4-smallnote">Голос работает по нажатию, не слушает постоянно. Пока BUDDY отвечает локальными правилами, без облачного AI.</div>
+</section>
+<main>
+    <section id="page-today" class="page active">
+<div class="intro"><div><div class="eyebrow">ТВОЯ ОРБИТА</div><h1 class="page-title">Время в твоих руках</h1><div class="sub" id="today-sub">Не просто день. Твой выбор.</div></div><div class="date" id="display-date"></div></div>
+      <div class="orbit-wrap"><div class="orbit-glow"></div><div id="orbit" class="orbit"><div class="orbit-inside"><div class="orb-small" id="orb-label">Сегодня учтено</div><div class="orb-time" id="orb-time" role="timer" aria-live="off">00:00</div><div class="orb-caption" id="orb-caption">Твой день только начинается</div><div id="live-status" class="live-status hidden"><span class="status-dot"></span><span id="live-status-text">СЧИТАЕМ СЕКУНДЫ</span></div></div></div></div>
+      <div class="hero-actions"><button class="btn btn-primary" id="start-btn">▶ Начать занятие</button><button class="btn btn-secondary hidden" id="pause-btn">Ⅱ Пауза</button><button class="btn btn-danger hidden" id="stop-btn">■ Завершить</button><button class="btn btn-secondary" id="add-btn" title="Добавить прошедшее занятие">＋ Вручную</button></div><p id="timer-help" class="timer-help">⏱️ Отсчёт показывает секунды. После сворачивания время восстановится по часам устройства.</p>
+      <div class="buddy-memory"><div><div class="eyebrow">СЛОВА НА СЕГОДНЯ</div><div class="daily-quote" id="v3-quote">Один маленький шаг тоже меняет твою историю.</div><div class="quote-credit">✦ ORAYMI · авторские мысли</div></div><div class="quote-actions"><button type="button" id="v3-next-quote" class="soft-btn">↻ Ещё мысль</button><button type="button" id="v3-save-quote" class="soft-btn">♡ Сохранить</button></div><div id="v3-quote-saved" class="privacy-note"></div></div>
+<a class="compass-link" href="#" id="v3-world-link"><span><b>🌍 Открой мир рядом</b><small>Зал, бассейн, парки, музыка и видео</small></span><span>→</span></a>
+
+       
+    <section class="section" style="margin-top:23px"><div class="section-head"><div class="section-title">Запусти в одно касание</div><div class="quiet">Быстрый старт ⚡</div></div>
+      <div class="quick-grid">
+        <button class="quick-card" data-quick="work" type="button"><span class="quick-emoji">🚀</span><span class="quick-title">Мой проект</span><span class="quick-min">без лимита</span></button>
+        <button class="quick-card" data-quick="study" type="button"><span class="quick-emoji">🧠</span><span class="quick-title">Фокус</span><span class="quick-min">25 минут</span></button>
+        <button class="quick-card" data-quick="sport" type="button"><span class="quick-emoji">💪</span><span class="quick-title">Тренировка</span><span class="quick-min">без лимита</span></button>
+        <button class="quick-card" data-quick="rest" type="button"><span class="quick-emoji">🌿</span><span class="quick-title">Перерыв</span><span class="quick-min">5 минут</span></button>
+      </div><p class="quiet" style="margin:9px 2px 0;line-height:1.5">Таймер работает по часам устройства. Уведомления в фоне пока не поддерживаются.</p>
+    </section>
+    <section class="section v4-hobby-section" aria-label="Мои хобби">
+ <div class="section-head"><div><div class="v4-eyebrow">ЛИЧНАЯ ВСЕЛЕННАЯ</div><div class="section-title">Твои увлечения ✨</div></div><span class="quiet" id="v4-hobby-count">0 занятий</span></div>
+ <div class="v4-pane">
+  <p class="v4-intro-copy">Для вдохновения, а не для гонки. Создай хобби и запускай его таймер одним касанием.</p>
+  <div class="v4-hobby-list" id="v4-hobbies"></div>
+  <form id="v4-hobby-form" class="v4-hobby-form">
+   <input id="v4-hobby-name" type="text" maxlength="35" placeholder="Например: фотография" required aria-label="Название хобби">
+   <select id="v4-hobby-kind" aria-label="Категория хобби"><option value="other">🌈 Хобби</option><option value="sport">🏋️ Спорт</option><option value="study">📚 Учёба</option><option value="rest">🌿 Отдых</option><option value="work">💻 Проект</option><option value="life">🎨 Личные дела</option></select>
+   <button class="v4-add" type="submit">＋ Добавить</button>
+  </form>
+  <div class="v4-suggestions"><button type="button" data-v4-hobby-sample="Рисование" data-v4-hobby-cat="life">🎨 Рисование</button><button type="button" data-v4-hobby-sample="Фотография" data-v4-hobby-cat="life">📷 Фото</button><button type="button" data-v4-hobby-sample="Изучение языков" data-v4-hobby-cat="study">🌍 Языки</button><button type="button" data-v4-hobby-sample="Прогулка" data-v4-hobby-cat="sport">🚶 Прогулка</button></div>
+ </div>
+</section>
+<section class="section" style="margin-top:23px"><div class="section-head"><div class="section-title">Мои 3 главных дела ✨</div><span class="quiet" id="tasks-progress">0 / 3</span></div>
+      <div class="card plan-card"><div id="tasks-list" class="tasks-list"></div><div class="task-entry"><input id="new-task" type="text" maxlength="80" placeholder="Что сегодня самое важное?" aria-label="Новое важное дело"><button id="task-add" type="button" class="btn btn-primary" aria-label="Добавить дело">＋</button></div><div class="task-hint" id="tasks-hint">Добавь до трёх дел на сегодня. Это твой план, не чужой.</div></div>
+    </section>
+    <section class="section" style="margin-top:24px"><div class="section-head"><div class="section-title">Твоя цель на сегодня</div><span class="quiet" id="goal-percent">0%</span></div>
+      <div class="feature-panel"><div class="progress-meta"><div><b id="goal-time">0 мин</b><span style="color:#9e96b5"> / </span><span id="goal-target">2 ч</span></div><div style="font-size:23px">🎯</div></div>
+        <div class="goal-track"><div class="goal-fill" id="goal-fill"></div></div>
+        <div class="goal-note" id="goal-note">Проведи время с пользой — проект, учёба или спорт.</div>
+        <div class="level-row"><span class="level-chip" id="level-chip">Уровень 1</span><div class="xp-meter"><i id="xp-fill" style="width:0%"></i></div><span class="level-xp" id="xp-count">0 XP</span></div>
+      </div>
+    </section>
+    <section class="section" style="margin-top:24px"><div class="section-head"><div class="section-title">Квесты дня</div><div class="quiet" id="quests-progress">0 / 3</div></div><div class="quest-list" id="quests-list"></div></section>
+    <div class="metrics">
+      <div class="metric"><div class="val" id="metric-sessions">0</div><div class="lbl">Занятий сегодня</div></div><div class="metric"><div class="val" id="metric-focus">0 мин</div><div class="lbl">Работа и обучение</div></div></div>
+      <section class="section"><div class="section-head"><div class="section-title">Баланс дня</div><div class="quiet">По категориям</div></div><div class="card" id="category-stats"></div></section>
+      <section class="section"><div class="section-head"><div class="section-title">Лента занятий</div><button class="small-btn" id="export-csv">Экспорт CSV ↗</button></div><div class="card" id="today-sessions"></div></section>
+      <section class="section"><div class="section-head"><div class="section-title">Вечерний итог</div><div class="quiet">Только для тебя</div></div><div class="card"><div class="section-title">Как ты себя чувствуешь?</div><div class="mood-options" role="group" aria-label="Настроение дня">
+      <button class="mood-btn" data-mood="1" type="button"><span>😞</span>Тяжело</button>
+      <button class="mood-btn" data-mood="2" type="button"><span>😕</span>Не очень</button>
+      <button class="mood-btn" data-mood="3" type="button"><span>😌</span>Нормально</button>
+      <button class="mood-btn" data-mood="4" type="button"><span>🙂</span>Хорошо</button>
+      <button class="mood-btn" data-mood="5" type="button"><span>🤩</span>Отлично</button>
+      </div><div class="mood-caption" id="mood-caption">Выбери настроение — это личный дневник.</div><div class="dotline" style="margin:18px 0"></div>
+      <label class="review-label" for="review">Что сегодня получилось? Что улучшить завтра?</label><textarea class="review" id="review" placeholder="Например: 2 часа учился, завтра меньше телефона…"></textarea><div class="sub" id="review-save" style="margin-top:7px">Сохраняется автоматически на устройстве</div></div></section>
+    </section>
+    <section id="page-week" class="page"><div class="eyebrow">АНАЛИТИКА</div><h1 class="page-title">Твоя неделя</h1><div class="sub">Сколько времени ты уделил тому, что важно.</div><section class="section"><div class="section-head"><div class="section-title">Последние 7 дней</div><div class="quiet" id="week-range"></div></div><div class="card"><div class="week-grid" id="week-grid"></div><div class="dotline"></div><div class="metrics" style="margin-top:18px"><div class="metric"><div class="val" id="week-total">0ч</div><div class="lbl">Учтено за неделю</div></div><div class="metric"><div class="val" id="week-days">0 / 7</div><div class="lbl">Активных дней</div></div></div></div></section><section class="section"><div class="section-head"><div class="section-title">Все категории за 7 дней</div></div><div class="card" id="week-categories"></div></section><section class="section"><div class="section-head"><div class="section-title">Что заметила ORAYMI ✨</div></div><div class="card"><p id="week-insight" class="note" style="margin:0">Добавь первое занятие, чтобы увидеть анализ своей недели.</p></div></section><div class="credit">Твои данные остаются у тебя на устройстве. Анализ основан только на статистике.</div></section>
+    <section id="page-rewards" class="page"><div class="eyebrow">НАСТОЯЩИЙ ПРОГРЕСС</div><h1 class="page-title">Твои достижения 🏆</h1><p class="sub">Каждый шаг имеет значение. Награды открываются по твоим занятиям, без выдуманных результатов.</p>
+    <section class="section"><div class="feature-panel"><div class="progress-meta"><div><span class="eyebrow">ТВОЙ УРОВЕНЬ</span><div style="font-size:34px;font-weight:850;margin-top:5px" id="rewards-level">1</div></div><div style="text-align:right"><div style="font-size:24px">⚡</div><div id="rewards-xp" style="font-size:12px;color:#c0b8d2">0 XP</div></div></div><div class="goal-track"><div class="goal-fill" id="rewards-xp-fill"></div></div><div class="goal-note" id="level-next">Всё начинается с первого занятия.</div></div></section>
+    <section class="section"><div class="section-head"><div class="section-title">Коллекция наград</div><span class="quiet" id="awards-progress">0 / 6</span></div><div class="badge-grid" id="awards-grid"></div></section>
+    <section class="section"><div class="section-head"><div class="section-title">Образы для твоего BUDDY 🧸</div><span class="quiet">За настоящий прогресс</span></div><div class="reward-shelf" id="v3-reward-shelf"></div><p class="privacy-note">Открываются по XP за реальные завершённые занятия. Никаких штрафов за пропущенный день. Образы — виртуальные, а не денежные призы.</p></section>
+<section class="section"><div class="v3-panel"><h3>Маленькие награды в реальной жизни 🎁</h3><p>После 25 минут фокуса — любимая песня. После тренировки — отдых без чувства вины. После недели регулярных занятий — прогулка в красивом месте. Не обязательно тратить деньги, чтобы порадовать себя.</p><button class="soft-btn" id="v3-reward-idea" type="button">Подскажи награду ✨</button><p id="v3-reward-text" aria-live="polite"></p></div></section>
+<div class="credit">ORAYMI считает достижения только по сохранённым данным.</div>
+  </section>
+  
+<section class="page" id="page-world">
+ <div class="eyebrow">ИССЛЕДУЙ И ОТДЫХАЙ</div><h1 class="page-title">Мир с BUDDY 🌍</h1><p class="sub">Маленькие открытия, которые делают обычный день лучше.</p>
+ <section class="section"><div class="section-head"><div class="section-title">Куда сегодня?</div><div class="quiet">Рядом с тобой</div></div>
+ <div class="world-grid">
+  <button type="button" class="world-card" data-near="gym"><div class="world-icon">🏋️</div><b>Тренажёрный зал</b><span>Фитнес, тренировки</span></button>
+  <button type="button" class="world-card" data-near="pool"><div class="world-icon">🏊</div><b>Бассейн</b><span>Плавание, восстановление</span></button>
+  <button type="button" class="world-card" data-near="park"><div class="world-icon">🌳</div><b>Парк и прогулка</b><span>Свежий воздух, перерыв</span></button>
+  <button type="button" class="world-card" data-near="library"><div class="world-icon">📚</div><b>Библиотека</b><span>Тихое место для учёбы</span></button>
+ </div><div class="v3-panel"><h3 id="v3-near-title">Найти места поблизости</h3><p id="v3-near-intro">Разрешение на местоположение запрашивается только после нажатия. Координаты используются для поиска через OpenStreetMap/Overpass; мы не сохраняем их в ORAYMI.</p><div class="privacy-note">Не хочешь делиться геолокацией? Найди места по названию города:</div><input id="v3-city" type="text" class="v3-input" maxlength="90" placeholder="Например, Warburg"><button id="v3-city-search" type="button" class="soft-btn">Поиск по городу ↗</button><div id="v3-near-status" class="privacy-note" role="status"></div><div id="v3-near-results" class="near-results"></div><button type="button" id="v3-near-maps" class="soft-btn" style="display:none;margin-top:12px">Открыть больше мест на карте ↗</button></div>
+ </section>
+ <section class="section" id="v4-media-library">
+ <div class="section-head"><div><div class="v4-eyebrow">ТВОИ ИЗБРАННЫЕ</div><div class="section-title">Медиатека BUDDY 🎧</div></div><span class="quiet">без автозапуска</span></div>
+ <div class="v4-pane"><p class="v4-intro-copy">Сохрани любимые треки, плейлисты и видео, чтобы находить их за секунду. Аккаунты Spotify и YouTube остаются у самих сервисов.</p>
+ <div class="v4-accounts"><a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">◉ Открыть мой Spotify ↗</a><a href="https://www.youtube.com/feed/subscriptions" target="_blank" rel="noopener noreferrer">▶ Мой YouTube ↗</a></div>
+ <form id="v4-media-form" class="v4-media-form"><input id="v4-media-name" maxlength="55" placeholder="Название, например: Мой плейлист" required aria-label="Название медиа"><input id="v4-media-url" maxlength="500" inputmode="url" placeholder="Ссылка Spotify или YouTube" required aria-label="Ссылка на медиа"><button type="submit" class="v4-add">＋ В избранное</button></form>
+ <div id="v4-media-list" class="v4-media-list"></div>
+ <div class="v4-smallnote">Для прослушивания может потребоваться вход в Spotify или YouTube в их приложении или браузере. ORAYMI не запрашивает пароли и не может управлять личным аккаунтом без отдельной авторизации.</div>
+ </div>
+</section>
+<section class="section"><div class="section-head"><div class="section-title">Музыка для твоего ритма 🎶</div></div><div class="v3-panel"><h3>Spotify</h3><p>Вставь ссылку на любимый трек, подкаст или плейлист. Официальный плеер загрузится только после твоего нажатия.</p><label for="spotify-url" class="quiet">Ссылка Spotify</label><input class="v3-input" id="spotify-url" autocomplete="off" type="url" placeholder="https://open.spotify.com/playlist/…"><button type="button" class="v3-action" id="v3-spotify-play">▶ Открыть Spotify</button><div class="playerbox" id="v3-spotify-box"></div><div class="privacy-note">Для прослушивания нужен интернет; доступные треки зависят от Spotify и типа аккаунта. Без автозапуска.</div></div></section>
+ <section class="section"><div class="section-head"><div class="section-title">Смотри с пользой ▶</div></div><div class="v3-panel"><h3>YouTube</h3><p>Видео про тренировки, обучение или отдых — по твоей ссылке, без рекомендаций, которые отвлекают.</p><label for="youtube-url" class="quiet">Ссылка на видео или плейлист YouTube</label><input class="v3-input" id="youtube-url" type="url" autocomplete="off" placeholder="https://youtu.be/…"><button type="button" class="v3-action" id="v3-youtube-play">▶ Открыть YouTube</button><div class="playerbox" id="v3-youtube-box"></div><div class="privacy-note">Видео загружается лишь после выбора; некоторые ролики запрещены автором к встраиванию. В этом случае смотри на YouTube.</div></div></section>
+ <section class="section"><details class="v4-sponsored"><summary>🎞️ Полезные предложения · открыть по желанию</summary><div class="v3-panel"><h3>Предложения от партнёров</h3><p>Мы не продаём данные о настроении, заданиях и привычках. Блок предназначен для реальных скидок от залов, курсов и полезных сервисов; рекламные предложения всегда будут явно отмечены.</p><label class="tiny-switch"><input id="v3-sponsor-opt" type="checkbox"><span>Показывать предложения партнёров, когда они появятся</span></label><div id="v3-sponsor-area" style="margin-top:14px"><div class="partner-placeholder">Пока реальных партнёров нет. Реклама не показывается.</div></div><div class="privacy-note">Для автоматических рекламных сетей потребуется отдельная законная система согласия на обработку данных. Здесь никаких рекламных трекеров нет.</div></div></details></section>
+</section>
+<section id="page-settings" class="page"><div class="eyebrow">НАСТРОЙКИ</div><h1 class="page-title">Твой ритм</h1><div class="sub">Приложение работает без регистрации.</div><div class="install-banner" id="v3-install"><div><b>📱 BUDDY на главном экране</b><p>Установи ярлык на главный экран Samsung. Постоянный персонаж поверх других приложений требует Android-версии.</p></div><button type="button" class="v3-action" id="install-app">Добавить</button></div>
+<section class="section"><div class="v3-panel"><h3>🧸 Твой BUDDY всегда под рукой</h3><p>После установки ярлык ORAYMI появится на домашнем экране Samsung. Внутри приложения BUDDY встретит тебя сразу. Постоянно показывать персонажа поверх других приложений веб-версия не умеет — это функция будущего Android-приложения.</p><button type="button" id="v3-install-settings" class="v3-action">Добавить на экран</button></div></section>
+<section class="section"><div class="v4-pane"><div class="v4-eyebrow">КОМФОРТ</div><h3 style="margin:9px 0 0;font-size:18px">Как ведёт себя BUDDY</h3>
+ <label class="v4-setting-line"><span><b>🔈 Ответы голосом</b><small>Включается вручную. Использует голос телефона.</small></span><input type="checkbox" id="v4-speech-toggle"></label>
+ <label class="v4-setting-line"><span><b>🧘 Бережный фокус</b><small>Во время таймера скрывать лишние карточки и медиа-подсказки на главной.</small></span><input type="checkbox" id="v4-focus-toggle"></label>
+ <p class="v4-smallnote">Мы не включаем микрофон сами. Распознавание голоса может обрабатываться сервисом браузера. Личные команды не отправляются ORAYMI на собственный сервер.</p>
+ </div></section>
+<section class="section"><div class="v3-panel"><h3>🔐 Как мы защищаем твои чувства</h3><p>Записи, эмоции, таймер и достижения хранятся локально в браузере. BUDDY не ставит диагнозов, не ругает за пропуски и не требует быть продуктивным постоянно. Геолокация используется только после отдельного запроса.</p><p>Важно: без аккаунта данные не синхронизируются между телефонами. Сохраняй резервную копию и не удаляй данные браузера без необходимости.</p></div></section>    <section class="section"><div class="card"><div class="section-title">Персонализация ✨</div><div class="setting"><div><div class="setting-title">Цель продуктивного времени</div><div class="setting-sub">Работа, учёба и спорт в минутах за день</div></div><input id="goal-input" type="number" min="15" max="720" step="15" value="120" aria-label="Цель дня в минутах"></div>
+       <div class="setting" style="display:block"><div class="setting-title">Цветовая вселенная</div><div class="setting-sub">Выбери атмосферу для своей орбиты</div><div class="theme-picks"><button type="button" class="theme-pick" data-theme-choice="nebula">🌌 Космос</button><button type="button" class="theme-pick" data-theme-choice="forest">🌿 Лес</button><button type="button" class="theme-pick" data-theme-choice="sunset">🌇 Закат</button></div></div>
+       </div></section>
+    <section class="section"><div class="card"><div class="setting"><div><div class="setting-title">Вопрос «Что делаешь?»</div><div class="setting-sub">Напоминание, пока приложение открыто и идёт отсчёт.</div></div><select id="check-frequency" aria-label="Частота проверки"><option value="0">Выкл.</option><option value="15">15 мин</option><option value="30">30 мин</option><option value="60">60 мин</option></select></div><div class="setting"><div><div class="setting-title">Сохранить копию</div><div class="setting-sub">Резервная копия всех занятий в JSON.</div></div><button class="small-btn" id="backup-btn">Скачать</button></div><div class="setting"><div><div class="setting-title">Восстановить копию</div><div class="setting-sub">Импорт заменит сохранённые данные.</div></div><button class="small-btn" id="restore-btn">Импорт</button><input id="restore-input" type="file" accept=".json,application/json" hidden></div><div class="setting"><div><div class="setting-title">Очистить всё</div><div class="setting-sub">Безвозвратно удаляет данные на этом устройстве.</div></div><button class="small-btn danger-link" id="clear-btn">Удалить</button></div></div></section><section class="section"><div class="card"><div class="section-title">Что уже умеет ORAYMI?</div><p class="note">✓ Отслеживать время и занятия<br>✓ Показывать живое кольцо ORBIT<br>✓ Статистика дня и последних 7 дней<br>✓ Добавлять время задним числом<br>✓ Заметки по итогам дня<br>✓ Резервная копия и экспорт<br>✓ Ежедневные цели, квесты, уровни и награды<br>✓ ORAYMI BUDDY и темы оформления<br>✓ Пауза и продолжение таймера<br>✓ Три главных дела с отметками выполнения<br>✓ Голосовые команды (по нажатию микрофона)<br>✓ Личная медиатека и хобби</p><p class="note"><strong>Важно:</strong> это первая локальная версия. Данные сохраняются только в браузере этого устройства. При очистке данных браузера они могут исчезнуть. Фоновый будильник, облачная синхронизация и полноценный AI-помощник будут следующими этапами. Персонаж сейчас работает по простым правилам, без подключения к ИИ.</p></div></section><div class="credit">ORAYMI 4.0 • Сделано для твоего времени</div></section>
+  </main>
+</div>
+<nav class="nav" aria-label="Навигация"><button class="navbtn active" data-page="today"><span class="navico">◉</span><span>Главная</span></button><button class="navbtn" data-page="week"><span class="navico">▥</span><span>Неделя</span></button><button class="navbtn" data-page="world"><span class="navico">🌍</span><span>Мир</span></button><button class="navbtn" data-page="rewards"><span class="navico">🏆</span><span>Награды</span></button>
+  <button class="navbtn" data-page="settings"><span class="navico">⚙</span><span>Настройки</span></button></nav>
+<div id="modal-root"></div><div id="toast" class="toast hidden" role="status"></div>
+<script>
+(() => {
+'use strict';
+const STORE='oraymi_local_v1';
+const CATS=[{id:'work',name:'Работа',icon:'💼',color:'#85efd2'},{id:'study',name:'Обучение',icon:'📖',color:'#b59afd'},{id:'sport',name:'Спорт',icon:'💪',color:'#ffc18b'},{id:'rest',name:'Отдых',icon:'☕',color:'#ed91c2'},{id:'life',name:'Личные дела',icon:'✦',color:'#90b7ff'},{id:'other',name:'Другое',icon:'◈',color:'#8f98af'}];
+const byId=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,'0');
+const keyDay=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const dayStart=k=>new Date(k+'T00:00:00').getTime();
+const dayEnd=k=>{const x=new Date(dayStart(k));x.setDate(x.getDate()+1);return x.getTime()};
+const today=()=>keyDay(new Date());
+const catInfo=id=>CATS.find(c=>c.id===id)||CATS[CATS.length-1];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const durFmt=ms=>{const m=Math.round(ms/60000);return m>=60?`${Math.floor(m/60)} ч ${m%60} мин`:`${m} мин`};
+const timerFmt=ms=>{const m=Math.floor(Math.max(0,ms)/60000);return `${pad(Math.floor(m/60))}:${pad(m%60)}`};
+const clockFmt=ms=>{const t=Math.floor(Math.max(0,ms)/1000);return `${pad(Math.floor(t/3600))}:${pad(Math.floor(t%3600/60))}:${pad(t%60)}`};
+const stampFmt=ms=>new Date(ms).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+const defaultData=()=>({sessions:[],active:null,reviews:{},moods:{},tasks:{},goalMinutes:120,theme:'nebula',frequency:30});
+let data;
+try{const d=JSON.parse(localStorage.getItem(STORE)||'null');data=d&&Array.isArray(d.sessions)&&d.reviews&&typeof d.reviews==='object'?{...defaultData(),...d,tasks:d.tasks&&typeof d.tasks==='object'&&!Array.isArray(d.tasks)?d.tasks:{}}:defaultData();}catch{data=defaultData();}
+const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(data));return true}catch{toast('Хранилище браузера недоступно. Опубликуй приложение через HTTPS.');return false}};
+let currentPage='today'; let checkShownFor=0; let lastDay=today();
+function toast(msg){const el=byId('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.add('hidden'),2900)}
+// All elapsed time is derived from wall-clock timestamps, never from tick counts.
+// Pauses are intervals; subtract them both from the live timer and from saved statistics.
+function overlap(s,start,end,now=Date.now()){
+  const raw=(a,b)=>Math.max(0,Math.min(b,end)-Math.max(a,start));
+  let elapsed=raw(s.start,s.end??now);
+  if(Array.isArray(s.pauses))for(const p of s.pauses){if(Number.isFinite(p.start))elapsed-=raw(p.start,Number.isFinite(p.end)?p.end:Math.min(s.end??now,now));}
+  return Math.max(0,elapsed);
+}
+const isPaused=s=>!!(s&&Array.isArray(s.pauses)&&s.pauses.some(p=>p.end==null));
+const activeElapsed=()=>data.active?overlap(data.active,data.active.start,Date.now()+1):0;
+function setTimerFace(){if(!data.active)return;byId('orb-time').textContent=clockFmt(activeElapsed());}
+function daySessions(k){const start=dayStart(k),end=dayEnd(k),now=Date.now();const arr=[...data.sessions,...(data.active?[{...data.active,end:null}]:[])];return arr.filter(s=>overlap(s,start,end,now)>0).sort((a,b)=>b.start-a.start)}
+function totals(k){const start=dayStart(k),end=dayEnd(k);const result=Object.fromEntries(CATS.map(c=>[c.id,0]));let total=0;for(const s of daySessions(k)){const ms=overlap(s,start,end);result[s.cat]=(result[s.cat]||0)+ms;total+=ms}return {total,cats:result,count:daySessions(k).length}}
+function categoryHTML(obj){const total=Object.values(obj).reduce((a,b)=>a+b,0);if(!total)return '<div class="empty">Пока нет записей. Начни первое занятие!</div>';return '<div class="cat-list">'+CATS.filter(c=>(obj[c.id]||0)>0).sort((a,b)=>obj[b.id]-obj[a.id]).map(c=>{const m=obj[c.id];return `<div class="catrow"><div class="cat-icon">${c.icon}</div><div class="cat-info"><div class="cat-top"><b>${c.name}</b><span class="mins">${durFmt(m)}</span></div><div class="bar"><i style="width:${(m/total*100).toFixed(2)}%;background:${c.color}"></i></div></div></div>`}).join('')+'</div>'}
+function ring(cats){let total=Object.values(cats).reduce((a,b)=>a+b,0);if(!total)return 'conic-gradient(#8b73ee 0% 1.5%, #302a43 1.5% 100%)';const segments=[];let last=0;for(const c of CATS){const v=cats[c.id]||0;if(v<=0)continue;const next=last+v/total*100;segments.push(`${c.color} ${last.toFixed(3)}% ${next.toFixed(3)}%`);last=next}return `conic-gradient(${segments.join(',')})`}
+function todayRender(){const k=today(),t=totals(k);byId('display-date').textContent=new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'short'});byId('orbit').style.background=ring(t.cats);byId('orb-time').textContent=data.active?clockFmt(activeElapsed()):timerFmt(t.total);byId('orb-label').textContent=data.active?(isPaused(data.active)?'На паузе':'Таймер работает'):'Сегодня учтено';byId('orb-caption').innerHTML=data.active?`<span class="spark ${isPaused(data.active)?'':'live'}"></span>${esc(data.active.title)}`:t.total?'Твоя орбита растёт':'Твой день только начинается';byId('today-sub').textContent=data.active?`В процессе: ${data.active.title}`:'Не просто день. Твой выбор.';byId('start-btn').classList.toggle('hidden',!!data.active);
+byId('pause-btn').classList.toggle('hidden',!data.active);
+byId('pause-btn').textContent=isPaused(data.active)?'▶ Продолжить':'Ⅱ Пауза';
+byId('stop-btn').classList.toggle('hidden',!data.active);
+byId('live-status').classList.toggle('hidden',!data.active);
+byId('live-status').classList.toggle('paused',isPaused(data.active));
+byId('live-status-text').textContent=isPaused(data.active)?'ПАУЗА':'СЕКУНДЫ ИДУТ';
+byId('timer-help').textContent=isPaused(data.active)?'Время остановлено. Нажми «Продолжить», когда будешь готов.':'⏱️ Время считается по часам устройства, даже когда экран заблокирован.';
+document.querySelectorAll('[data-quick]').forEach(b=>b.disabled=!!data.active);byId('metric-sessions').textContent=t.count;byId('metric-focus').textContent=durFmt((t.cats.work||0)+(t.cats.study||0));byId('category-stats').innerHTML=categoryHTML(t.cats);const sessions=daySessions(k);byId('today-sessions').innerHTML=sessions.length?sessions.map(s=>{const c=catInfo(s.cat),ms=overlap(s,dayStart(k),dayEnd(k));return `<div class="entry"><div class="cat-icon">${c.icon}</div><div><div class="entry-title">${esc(s.title)}</div><div class="entry-sub">${c.name} · ${stampFmt(Math.max(s.start,dayStart(k)))}${s.end?' – '+stampFmt(Math.min(s.end,dayEnd(k))):' · идёт'}</div></div><div class="entry-right"><b>${durFmt(ms)}</b><div class="entry-sub">${s.end?'Завершено':isPaused(s)?'Ⅱ Пауза':'● Сейчас'}${s.end?` <button type="button" class="entry-del" data-delete="${esc(s.id)}" aria-label="Удалить запись" title="Удалить запись">×</button>`:''}</div></div></div>`}).join(''):'<div class="empty">Здесь появятся твои занятия.<br>Нажми «Начать занятие».</div>';if(document.activeElement!==byId('review'))byId('review').value=data.reviews[k]||''}
+function last7(){const keys=[];let d=new Date();d.setHours(12,0,0,0);for(let i=6;i>=0;i--){const x=new Date(d);x.setDate(d.getDate()-i);keys.push(keyDay(x))}return keys}
+function weekRender(){const keys=last7(),vals=keys.map(k=>totals(k)),max=Math.max(...vals.map(v=>v.total),1),sum=vals.reduce((a,v)=>a+v.total,0),cs=Object.fromEntries(CATS.map(c=>[c.id,0]));vals.forEach(v=>CATS.forEach(c=>cs[c.id]+=v.cats[c.id]||0));byId('week-range').textContent=`${keys[0].slice(5)} — ${keys[6].slice(5)}`;byId('week-grid').innerHTML=keys.map((k,i)=>`<div class="week-day ${k===today()?'today':''}"><div class="week-amt">${vals[i].total?`${(vals[i].total/3600000).toFixed(1)}ч`:'—'}</div><div class="week-column"><div class="week-fill" style="height:${Math.max(4,vals[i].total/max*126)}px"></div></div><div class="week-lbl">${['Вс','Пн','Вт','Ср','Чт','Пт','Сб'][new Date(dayStart(k)).getDay()]}</div></div>`).join('');byId('week-total').textContent=durFmt(sum);byId('week-days').textContent=`${vals.filter(x=>x.total>0).length} / 7`;byId('week-categories').innerHTML=categoryHTML(cs);
+const lead=CATS.slice().sort((a,b)=>(cs[b.id]||0)-(cs[a.id]||0))[0];
+const maxIdx=vals.findIndex(v=>v.total===max);
+byId('week-insight').textContent=sum>0?`За 7 дней ты учёл ${durFmt(sum)}. Больше всего времени — «${lead.name}» (${durFmt(cs[lead.id])}). ${vals.filter(v=>v.total>0).length===1?'Начало положено! Попробуй уделить своим планам время ещё один день.':`Дней с занятиями: ${vals.filter(v=>v.total>0).length} из 7.`} Отдых тоже важен.`:'Запиши первое занятие — ORAYMI покажет твой реальный ритм без выдуманных оценок.';}
+function render(){if(currentPage==='today'){todayRender();delightRender();renderTasks();}else if(currentPage==='week')weekRender();else if(currentPage==='rewards')rewardsRender();applyTheme();}
+function switchPage(page){currentPage=page;document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id==='page-'+page));document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.page===page));if(page==='settings'){byId('check-frequency').value=String(data.frequency??30);byId('goal-input').value=data.goalMinutes||120;}render();window.scrollTo({top:0,behavior:'instant'})}
+const modalRoot=byId('modal-root');
+function closeModal(){modalRoot.innerHTML=''}
+function formModal(manual=false){let selected='work';modalRoot.innerHTML=`<div class="modal-bg" role="presentation"><div class="modal" role="dialog" aria-modal="true" aria-label="${manual?'Добавить запись':'Начать занятие'}"><div class="modal-title">${manual?'Добавить занятие':'Чем занимаешься?'}</div><div class="modal-sub">${manual?'Запиши занятие, которое уже закончилось.':'Выбери занятие — ORAYMI запомнит время.'}</div><div class="cats" id="modal-cats">${CATS.map(c=>`<button type="button" class="cat-choice ${c.id===selected?'selected':''}" data-cat="${c.id}"><b>${c.icon}</b>${c.name}</button>`).join('')}</div><div class="field"><label for="activity-title">Название занятия</label><input id="activity-title" maxlength="80" placeholder="Например: Разрабатываю JEROLD" autocomplete="off"></div>${manual?'<div class="field"><label for="activity-date">Дата</label><input id="activity-date" type="date" required></div><div class="field"><label for="activity-time">Начало</label><input id="activity-time" type="time" required></div><div class="field"><label for="activity-minutes">Длительность, минут</label><input id="activity-minutes" type="number" min="1" max="1440" value="30" inputmode="numeric"></div>':''}<div class="modal-actions"><button class="btn btn-secondary" id="modal-cancel">Отмена</button><button class="btn btn-primary" id="modal-confirm">${manual?'＋ Добавить':'▶ Начать'}</button></div></div></div>`;
+if(manual){byId('activity-date').value=today();const d=new Date();byId('activity-time').value=`${pad(d.getHours())}:${pad(d.getMinutes())}`};const choices=modalRoot.querySelectorAll('[data-cat]');choices.forEach(b=>b.onclick=()=>{selected=b.dataset.cat;choices.forEach(x=>x.classList.toggle('selected',x.dataset.cat===selected));byId('activity-title').placeholder='Например: '+({work:'Работал над проектом',study:'Изучал программирование',sport:'Тренировка',rest:'Отдыхал',life:'Личные дела',other:'Моё занятие'}[selected]);});modalRoot.querySelector('.modal-bg').onclick=e=>{if(e.target===e.currentTarget)closeModal()};byId('modal-cancel').onclick=closeModal;byId('modal-confirm').onclick=()=>{const title=byId('activity-title').value.trim()||catInfo(selected).name;if(manual){const date=byId('activity-date').value,time=byId('activity-time').value,mins=Number(byId('activity-minutes').value);if(!/^\d{4}-\d\d-\d\d$/.test(date)||!/^\d\d:\d\d$/.test(time)||!Number.isInteger(mins)||mins<1||mins>1440){toast('Проверь дату, время и длительность');return}const start=new Date(date+'T'+time+':00').getTime(),end=start+mins*60000;if(!Number.isFinite(start)||start>Date.now()||end>Date.now()+60000){toast('Занятие должно быть в прошлом');return}data.sessions.push({id:cryptoId(),cat:selected,title,start,end});toast('Занятие добавлено')}else{if(data.active){toast('Сначала заверши текущее занятие');return}data.active={id:cryptoId(),cat:selected,title,start:Date.now(),end:null,pauses:[]};checkShownFor=0;toast('Таймер запущен!')}save();closeModal();render()};byId('activity-title').focus();}
+function cryptoId(){return 's'+Date.now().toString(36)+Math.random().toString(36).slice(2,9)}
+function pauseResume(){
+ if(!data.active)return;
+ if(!Array.isArray(data.active.pauses))data.active.pauses=[];
+ const time=Date.now();
+ if(isPaused(data.active)){const p=data.active.pauses.findLast(p=>p.end==null);if(p)p.end=time;toast('▶ Отсчёт продолжается!');}
+ else {data.active.pauses.push({start:time,end:null});toast('Ⅱ Таймер на паузе');}
+ save();render();
+}
+function stop(){
+ if(!data.active)return;
+ const end=Date.now(),dur=activeElapsed();
+ if(dur<1000&&!confirm('Занятие длилось меньше 1 секунды. Всё равно завершить?'))return;
+ const s={...data.active,end,pauses:Array.isArray(data.active.pauses)?data.active.pauses.map(p=>p.end==null?{...p,end}:p):[]};
+ data.sessions.push(s);data.active=null;save();render();toast('Занятие сохранено ✓');
+}
+function dl(content,filename,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+const csvCell=x=>'"'+String(x).replace(/"/g,'""')+'"';
+function exportCsv(){const rows=[['Категория','Занятие','Начало','Конец','Длительность, мин']];for(const s of data.sessions){rows.push([catInfo(s.cat).name,s.title,new Date(s.start).toLocaleString('ru-RU'),new Date(s.end).toLocaleString('ru-RU'),(overlap(s,s.start,s.end)/60000).toFixed(1)])}if(data.active)rows.push([catInfo(data.active.cat).name,data.active.title,new Date(data.active.start).toLocaleString('ru-RU'),'В процессе',(activeElapsed()/60000).toFixed(1)]);dl('\ufeff'+rows.map(row=>row.map(csvCell).join(';')).join('\r\n'),'oraymi-time-'+today()+'.csv','text/csv;charset=utf-8');toast('CSV подготовлен')}
+function downloadBackup(){dl(JSON.stringify({...data,exportedAt:new Date().toISOString()},null,2),'oraymi-backup-'+today()+'.json','application/json');toast('Копия подготовлена')}
+function safeImport(d){if(!d||!Array.isArray(d.sessions)||typeof d.reviews!=='object'||!d.reviews||d.sessions.length>50000)throw Error('Неверный формат');const all=[...d.sessions,...(d.active?[d.active]:[])];if(!all.every(s=>s&&typeof s.title==='string'&&s.title.length<=80&&CATS.some(c=>c.id===s.cat)&&Number.isFinite(s.start)&&(s.end==null||Number.isFinite(s.end)&&s.end>=s.start)))throw Error('Некорректные занятия');if(d.active&&d.active.end!=null)throw Error('Неверный активный таймер');if(!all.every(s=>!s.pauses||(Array.isArray(s.pauses)&&s.pauses.every(p=>Number.isFinite(p.start)&&(p.end==null||Number.isFinite(p.end)&&p.end>=p.start)))))throw Error('Некорректные паузы');return {sessions:d.sessions,active:d.active||null,reviews:d.reviews,moods:d.moods&&typeof d.moods==='object'?d.moods:{},tasks:d.tasks&&typeof d.tasks==='object'&&!Array.isArray(d.tasks)?d.tasks:{},goalMinutes:Number.isInteger(d.goalMinutes)&&d.goalMinutes>=15&&d.goalMinutes<=720?d.goalMinutes:120,theme:['nebula','forest','sunset'].includes(d.theme)?d.theme:'nebula',frequency:[0,15,30,60].includes(d.frequency)?d.frequency:30}}
+let elapsedTickCount=0;
+function tick(){
+ if(today()!==lastDay){lastDay=today();render();}
+ if(currentPage==='today'&&data.active){
+   setTimerFace();
+   elapsedTickCount++;
+   if(elapsedTickCount%5===0){todayRender();delightRender();renderTasks();}
+ }
+ if(data.active&&!isPaused(data.active)&&data.frequency>0){
+   const block=Math.floor(activeElapsed()/(data.frequency*60000));
+   if(block>0&&block>checkShownFor){checkShownFor=block;
+     if(!modalRoot.children.length){modalRoot.innerHTML=`<div class="modal-bg"><div class="modal" role="dialog" aria-modal="true" aria-label="Проверка занятия"><div class="modal-title">Ты всё ещё занят?</div><div class="modal-sub">Уже ${durFmt(activeElapsed())}: ${esc(data.active.title)}</div><div class="modal-actions"><button class="btn btn-secondary" id="check-stop">Закончить</button><button class="btn btn-primary" id="check-yes">Да, продолжаю</button></div></div></div>`;byId('check-yes').onclick=closeModal;byId('check-stop').onclick=()=>{closeModal();stop()}}
+   }
+ }
+}
+
+// Progress is always calculated from actual local sessions.
+function productive(t){return (t.cats.work||0)+(t.cats.study||0)+(t.cats.sport||0)}
+function currentXP(){return data.sessions.reduce((sum,s)=>{if(!Number.isFinite(s.start)||!Number.isFinite(s.end))return sum;const m=Math.max(0,Math.min(1440,overlap(s,s.start,s.end)/60000));return sum+(m>=1?15+Math.floor(m/15)*3:0)},0)}
+function userLevel(){return Math.floor(currentXP()/200)+1}
+function dayStreak(){let days=0;const d=new Date();d.setHours(12,0,0,0);for(let i=0;i<366;i++){const k=keyDay(d),t=totals(k);if(productive(t)>=15*60000){days++;}else if(i===0){d.setDate(d.getDate()-1);continue;}else break;d.setDate(d.getDate()-1);}return days}
+function allCategoryCount(){return new Set(data.sessions.filter(s=>s.end>s.start).map(s=>s.cat)).size}
+function quickStart(kind){if(data.active){toast('Сначала закончи текущее занятие');return}const defs={work:{title:'Работаю над проектом',cat:'work'},study:{title:'Фокус на учёбе',cat:'study',targetMin:25},sport:{title:'Тренировка',cat:'sport'},rest:{title:'Осознанный перерыв',cat:'rest',targetMin:5}};const d=defs[kind];if(!d)return;data.active={id:cryptoId(),cat:d.cat,title:d.title,start:Date.now(),end:null,pauses:[],...(d.targetMin?{targetMin:d.targetMin}:{})};checkShownFor=0;save();render();toast(d.targetMin?`Таймер запущен • цель ${d.targetMin} мин`:'Занятие запущено!')}
+function dayQuests(){const t=totals(today());const sessionCount=data.sessions.filter(s=>overlap(s,dayStart(today()),dayEnd(today()))>0).length;const cats=CATS.filter(c=>t.cats[c.id]>=60000).length;const focus=Math.floor(productive(t)/60000);return [
+{icon:'🌱',name:'Первый шаг',detail:'Запиши любое занятие',done:sessionCount>=1},
+{icon:'🔥',name:'25 минут для себя',detail:`Продуктивно: ${Math.min(25,focus)} / 25 мин`,done:focus>=25},
+{icon:'⚖️',name:'Баланс дня',detail:`Разных занятий: ${Math.min(2,cats)} / 2`,done:cats>=2}];}
+const tips=['Начни с 10 минут: маленький шаг легче большого обещания.','Отдых — тоже важная часть дня. Его не нужно заслуживать.','Сложное дело? Разбей на один маленький шаг и запускай таймер.','После фокусной работы можно сделать короткий перерыв.','Не сравнивай себя с другими. Сравни сегодняшний день со вчерашним.','Один пропущенный день не обнуляет твой прогресс как человека.'];
+let tipIndex=0;
+function buddyMessage(){const t=totals(today()),p=productive(t)/60000;if(data.active){const elapsed=Math.floor(activeElapsed()/60000);if(isPaused(data.active))return 'Отдыхай спокойно — время на паузе. Вернёшься, когда будешь готов. 💜';if(data.active.targetMin){const left=data.active.targetMin-elapsed;return left>0?`Ты в потоке! До цели ещё ${left} мин. ✨`:'Цель по времени достигнута! Заверши, когда будешь готов. 🎉'}return 'Твой таймер идёт. Маленькие шаги тоже считаются! ⚡'}if(p>=Number(data.goalMinutes||120))return 'Супер! Сегодняшняя цель уже достигнута. Отдых тоже важен 💚';if(Number((data.moods||{})[today()]||0)>0&&Number((data.moods||{})[today()]||0)<=2)return 'Сегодня можно замедлиться. Отдых и забота о себе тоже важны. 🤍';if(t.total>=60000)return `Ты уже учёл ${durFmt(t.total)} сегодня. Продолжай в своём ритме ✨`;if(t.count>0)return 'Первое маленькое занятие уже позади. Можно идти в своём темпе ✨';return 'Привет! Выбери занятие — и начнём твой день 🌙'}
+function delightRender(){const t=totals(today()),prod=productive(t),target=(Number(data.goalMinutes)||120)*60000,pct=Math.min(100,Math.round(prod/target*100)),xp=currentXP(),quests=dayQuests();
+byId('goal-time').textContent=durFmt(prod);byId('goal-target').textContent=durFmt(target);byId('goal-percent').textContent=pct+'%';byId('goal-fill').style.width=pct+'%';byId('goal-note').textContent=pct>=100?'✨ Цель дня достигнута! Можно гордиться своим прогрессом.':'Считаем время проекта, обучения и спорта.';
+byId('level-chip').textContent=`⭐ Уровень ${userLevel()}`;byId('xp-fill').style.width=(xp%200/200*100)+'%';byId('xp-count').textContent=`${xp} XP`;
+byId('quests-progress').textContent=`${quests.filter(q=>q.done).length} / 3`;
+byId('quests-list').innerHTML=quests.map(q=>`<div class="quest ${q.done?'done':''}"><div class="quest-mark">${q.done?'✅':q.icon}</div><div class="quest-text"><div class="quest-name">${q.name}</div><div class="quest-detail">${q.done?'Выполнено!':q.detail}</div></div><div class="quest-reward">${q.done?'✓':'○'}</div></div>`).join('');
+byId('buddy-message').textContent=buddyMessage();const mood=Number((data.moods||{})[today()]||0);document.querySelectorAll('[data-mood]').forEach(b=>{b.classList.toggle('selected',Number(b.dataset.mood)===mood);b.setAttribute('aria-pressed',String(Number(b.dataset.mood)===mood))});byId('mood-caption').textContent=mood?'Настроение записано. Можно изменить в любое время.':'Выбери настроение — это личный дневник.';
+const act=data.active;if(act&&act.targetMin&&!isPaused(act)){const left=act.targetMin*60000-activeElapsed();byId('orb-caption').textContent=left>0?`🎯 До цели: ${timerFmt(Math.ceil(left/60000)*60000)}`:'✨ Время фокуса достигнуто!';}
+}
+function historicalStats(){const dayKeys=new Set();for(const s of data.sessions){if(!Number.isFinite(s.start)||!Number.isFinite(s.end))continue;let d=new Date(s.start);d.setHours(12,0,0,0);const e=new Date(s.end);e.setHours(12,0,0,0);for(let i=0;i<31&&d<=e;i++,d.setDate(d.getDate()+1))dayKeys.add(keyDay(d));}
+const keys=[...dayKeys].sort(),productiveDays=new Set(),balances=new Set();let maxFocus=0;for(const k of keys){const t=totals(k);if(productive(t)>=15*60000)productiveDays.add(k);if(CATS.filter(c=>t.cats[c.id]>=60000).length>=3)balances.add(k);maxFocus=Math.max(maxFocus,(t.cats.work||0)+(t.cats.study||0));}let run=0,maxRun=0;for(const k of keys){if(productiveDays.has(k)){const prev=new Date(dayStart(k));prev.setDate(prev.getDate()-1);run=productiveDays.has(keyDay(prev))?run+1:1;maxRun=Math.max(maxRun,run);}else run=0;}let maxWeek=0;for(const k of keys){const d=new Date(dayStart(k));let ms=0;for(let i=0;i<7;i++){ms+=productive(totals(keyDay(d)));d.setDate(d.getDate()-1);}maxWeek=Math.max(maxWeek,ms);}return {maxFocus,maxRun,maxWeek,balances:balances.size};}
+function awards(){const h=historicalStats(),hasSport=data.sessions.some(s=>s.cat==='sport'&&s.end-s.start>=30*60000);return [
+{icon:'🌱',name:'Первый шаг',hint:'Сохрани первое занятие',ok:data.sessions.length>=1},
+{icon:'🎯',name:'В фокусе',hint:'25 минут обучения или работы за день',ok:h.maxFocus>=25*60000},
+{icon:'💪',name:'Энергия',hint:'Одна тренировка от 30 минут',ok:hasSport},
+{icon:'⚖️',name:'Баланс',hint:'Три категории в один день',ok:h.balances>0},
+{icon:'🔥',name:'Ритм',hint:'7 дней подряд по 15 минут пользы',ok:h.maxRun>=7},
+{icon:'🌌',name:'Создатель времени',hint:'10 часов пользы за неделю',ok:h.maxWeek>=600*60000}];}
+function rewardsRender(){const xp=currentXP(),level=userLevel(),a=awards();byId('rewards-level').textContent=level;byId('rewards-xp').textContent=xp+' XP';byId('rewards-xp-fill').style.width=(xp%200/200*100)+'%';byId('level-next').textContent=`До следующего уровня: ${200-xp%200} XP · Серия полезных дней: ${dayStreak()}`;byId('awards-progress').textContent=`${a.filter(x=>x.ok).length} / ${a.length}`;
+byId('awards-grid').innerHTML=a.map(x=>`<div class="award ${x.ok?'unlocked':''}"><div class="award-icon">${x.icon}</div><div class="award-name">${x.name}</div><div class="award-hint">${x.ok?'Открыто! ✨':x.hint}</div></div>`).join('')}
+function applyTheme(){const theme=['nebula','forest','sunset'].includes(data.theme)?data.theme:'nebula';document.body.dataset.theme=theme;document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===theme)))}
+// Three personal priorities per day. No account, no server.
+function dayTasks(){const list=data.tasks?.[today()];return Array.isArray(list)?list.filter(x=>x&&typeof x.text==='string').slice(0,3):[]}
+function renderTasks(){
+ const list=dayTasks(),done=list.filter(t=>t.done).length;
+ byId('tasks-progress').textContent=`${done} / 3`;
+ byId('tasks-list').innerHTML=list.length?list.map(t=>`<div class="task-item ${t.done?'done':''}"><button type="button" class="task-toggle" data-task-toggle="${esc(t.id)}" aria-label="${t.done?'Вернуть':'Выполнить'} дело" aria-pressed="${t.done}">${t.done?'✓':'○'}</button><span class="task-title">${esc(t.text)}</span><button type="button" class="task-delete" data-task-delete="${esc(t.id)}" aria-label="Удалить дело">×</button></div>`).join(''):'<div class="task-empty">Напиши три дела, которые сделают этот день твоим ✨</div>';
+ byId('new-task').disabled=list.length>=3;byId('task-add').disabled=list.length>=3;
+ byId('tasks-hint').textContent=list.length>=3?(done===3?'Все три дела выполнены! ✨ Сохрани этот момент.':'Можно менять планы — нажми × рядом с делом.'):'Дела сохраняются на этом устройстве. Осталось мест: '+(3-list.length);
+}
+function addTask(){const input=byId('new-task'),text=input.value.trim();if(!text){toast('Напиши название дела');return}if(!data.tasks||typeof data.tasks!=='object')data.tasks={};const list=dayTasks();if(list.length>=3){toast('В списке уже три дела');return}list.push({id:cryptoId(),text:text.slice(0,80),done:false});data.tasks[today()]=list;input.value='';save();renderTasks();toast('Дело добавлено ✨')}
+byId('task-add').onclick=addTask;
+byId('new-task').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addTask()}});
+byId('tasks-list').addEventListener('click',e=>{const tg=e.target.closest('[data-task-toggle]'),del=e.target.closest('[data-task-delete]');if(!tg&&!del)return;const list=dayTasks(),id=(tg||del).dataset.taskToggle||(tg||del).dataset.taskDelete;const idx=list.findIndex(x=>x.id===id);if(idx<0)return;if(tg)list[idx].done=!list[idx].done;else list.splice(idx,1);data.tasks[today()]=list;save();renderTasks();if(tg&&list.length===3&&list.every(x=>x.done))toast('Все планы дня выполнены! ✨')});
+// Activity delete with explicit confirmation.
+byId('today-sessions').addEventListener('click',e=>{const b=e.target.closest('[data-delete]');if(!b)return;const s=data.sessions.find(s=>s.id===b.dataset.delete);if(!s)return;if(!confirm(`Удалить занятие «${s.title}»?`))return;data.sessions=data.sessions.filter(x=>x.id!==s.id);save();render();toast('Запись удалена')});
+document.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',()=>quickStart(b.dataset.quick)));
+document.querySelectorAll('[data-mood]').forEach(b=>b.addEventListener('click',()=>{if(!data.moods||typeof data.moods!=='object')data.moods={};data.moods[today()]=Number(b.dataset.mood);save();render();toast('Настроение записано 💚')}));
+byId('buddy-tip').onclick=()=>{byId('buddy-message').textContent=tips[tipIndex++%tips.length]};
+byId('goal-input').addEventListener('change',e=>{const raw=Number(e.target.value);if(!Number.isInteger(raw)||raw<15||raw>720){e.target.value=data.goalMinutes||120;toast('Выбери от 15 до 720 минут');return}data.goalMinutes=raw;save();render();toast('Цель обновлена')});
+document.querySelectorAll('[data-theme-choice]').forEach(b=>b.onclick=()=>{data.theme=b.dataset.themeChoice;save();applyTheme();toast('Тема изменена')});
+
+document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>switchPage(b.dataset.page));byId('start-btn').onclick=()=>formModal(false);byId('pause-btn').onclick=pauseResume;byId('stop-btn').onclick=stop;byId('add-btn').onclick=()=>formModal(true);byId('export-csv').onclick=exportCsv;byId('backup-btn').onclick=downloadBackup;byId('restore-btn').onclick=()=>byId('restore-input').click();byId('restore-input').onchange=async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;try{const d=safeImport(JSON.parse(await file.text()));if(!confirm('Заменить текущие занятия и заметки резервной копией?'))return;data=d;save();render();toast('Копия восстановлена')}catch(err){toast('Ошибка импорта: '+err.message)}};byId('clear-btn').onclick=()=>{if(!confirm('Удалить ВСЕ занятия, заметки и настройки? Это нельзя отменить.'))return;if(!confirm('Точно удалить всё? Лучше сначала скачать резервную копию.'))return;data=defaultData();save();render();toast('Данные удалены')};byId('check-frequency').onchange=e=>{data.frequency=Number(e.target.value);checkShownFor=0;save();toast('Настройка сохранена')};byId('review').oninput=e=>{data.reviews[today()]=e.target.value;save();byId('review-save').textContent='✓ Сохранено на этом устройстве'};window.addEventListener('storage',e=>{if(e.key===STORE){try{data={...defaultData(),...(JSON.parse(e.newValue)||{})};render()}catch{}}});document.addEventListener('visibilitychange',()=>{if(!document.hidden){render();tick();}});window.addEventListener('pageshow',()=>{render();tick()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});render();setInterval(tick,1000);
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const SOFT='oraymi_v3_preferences';
+  const DATA_KEY='oraymi_local_v1';
+  const version='3.0';
+  const safeRead=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||'null')||fallback}catch{return fallback}};
+  const defaults={outfit:'mint',quoteIndex:0,savedQuotes:[],spotify:'',youtube:'',sponsors:false};
+  let prefs={...defaults,...safeRead(SOFT,{})};
+  const save=()=>{try{localStorage.setItem(SOFT,JSON.stringify(prefs))}catch{}};
+  const base=()=>safeRead(DATA_KEY,{sessions:[],tasks:{},moods:{},reviews:{}});
+  const msg=s=>{$('buddy-message').textContent=s};
+  const say=s=>{const el=$('v3-near-status');if(el)el.textContent=s};
+  const quotes=[
+    'Твой темп имеет право отличаться от чужого.',
+    'Даже несколько минут заботы о себе имеют значение.',
+    'Отдых — не награда за усталость. Это часть жизни.',
+    'Можно начать снова в любой момент, не дожидаясь понедельника.',
+    'Небольшое действие сегодня важнее идеального плана на завтра.',
+    'Не обязательно быть сильным каждую минуту.',
+    'Ты не обязан успеть всё, чтобы день был хорошим.',
+    'Хороший ритм состоит из усилия и мягких пауз.',
+    'Пусть цели помогают жить, а не заменяют жизнь.',
+    'Каждая новая попытка — это движение, а не возвращение к нулю.',
+    'Неудачный час не означает неудачный день.',
+    'Сначала прояви к себе доброту, потом выбирай следующий шаг.',
+    'Твой путь не обязан выглядеть впечатляюще со стороны.',
+    'Победа — иногда просто выйти на десятиминутную прогулку.',
+    'День может быть тихим и всё равно важным.',
+    'Прогресс — это не только скорость, но и умение останавливаться.'
+  ];
+  const rewardIdeas=[
+    '🌿 Прогуляйся десять минут без спешки и без телефона.',
+    '🎶 Выбери одну любимую песню и послушай с удовольствием.',
+    '🫖 Сделай себе чай или стакан воды и немного отдохни.',
+    '📷 Сфотографируй красивую мелочь сегодняшнего дня.',
+    '💌 Напиши тёплое сообщение человеку, с которым давно не общался.',
+    '🌙 Разреши себе спокойный вечер без дополнительных задач.',
+    '🧸 Поменяй образ BUDDY, если уже открыл новый.'
+  ];
+  function showQuote(){const n=(Math.max(0,Math.floor(Number(prefs.quoteIndex)||0)))%quotes.length;$('v3-quote').textContent='«'+quotes[n]+'»';$('v3-quote-saved').textContent=(prefs.savedQuotes||[]).includes(n)?'♡ Эта мысль сохранена у тебя на устройстве.':'';}
+  $('v3-next-quote').onclick=()=>{prefs.quoteIndex=(Number(prefs.quoteIndex)||0)+1;save();showQuote()};
+  $('v3-save-quote').onclick=()=>{const n=(Number(prefs.quoteIndex)||0)%quotes.length;let a=Array.isArray(prefs.savedQuotes)?prefs.savedQuotes:[];a=a.filter(x=>Number.isInteger(x)&&x>=0&&x<quotes.length);if(!a.includes(n))a.push(n);else a=a.filter(x=>x!==n);prefs.savedQuotes=a;save();showQuote()};
+  // Daily deterministic quote until the user chooses a different one.
+  if(!safeRead(SOFT,null)){prefs.quoteIndex=Math.floor((Date.now()/86400000)%quotes.length);save()};showQuote();
+  $('buddy-kind').onclick=()=>{msg('Я рядом. Если сегодня тяжело, тебе не нужно ничего доказывать. Можно отдохнуть, попить воды или поговорить с близким. 🤍');document.querySelectorAll('[data-mood="1"]').forEach(b=>b.click());};
+  $('buddy-motivate').onclick=()=>{msg('Давай выберем только один простой шаг: 5 минут для дела или спокойная прогулка. И это уже достаточно. 🌱')};
+  $('buddy-play').onclick=()=>{document.querySelector('[data-page="world"]').click();setTimeout(()=>$('spotify-url').focus({preventScroll:true}),100)};
+  $('v3-world-link').onclick=e=>{e.preventDefault();document.querySelector('[data-page="world"]').click()};
+  const getXP=()=>{
+    const rows=Array.isArray(base().sessions)?base().sessions:[];
+    return rows.reduce((s,x)=>{
+      const valid=Number.isFinite(x.start)&&Number.isFinite(x.end)&&x.end>x.start;
+      if(!valid)return s;
+      // Match v2 XP calculation.
+      const pauses=Array.isArray(x.pauses)?x.pauses:[];const pausedMs=pauses.reduce((total,p)=>{if(!Number.isFinite(p.start))return total;const start=Math.max(x.start,p.start);const end=Math.min(x.end,Number.isFinite(p.end)?p.end:x.end);return total+Math.max(0,end-start)},0);const m=Math.max(0,Math.min(1440,(x.end-x.start-pausedMs)/60000));return s+(m>=1?15+Math.floor(m/15)*3:0);
+    },0);
+  };
+  const outfits=[
+    {id:'mint',icon:'🍃',name:'Мятный BUDDY',min:0},
+    {id:'moon',icon:'🌙',name:'Лунный BUDDY',min:60},
+    {id:'sun',icon:'☀️',name:'Солнечный BUDDY',min:160},
+    {id:'forest',icon:'🌲',name:'Лесной BUDDY',min:350}
+  ];
+  function renderOutfits(){const xp=getXP();const shelf=$('v3-reward-shelf');if(!shelf)return;
+    if(!outfits.some(x=>x.id===prefs.outfit&&x.min<=xp))prefs.outfit='mint';
+    document.querySelector('.buddy-face').dataset.outfit=prefs.outfit;
+    shelf.innerHTML=outfits.map(x=>{const locked=xp<x.min;return `<div class="reward-item ${locked?'locked':''}"><div class="reward-emoji">${x.icon}</div><b>${x.name}</b><span>${locked?`Ещё ${x.min-xp} XP для открытия`:`Открыто • ${x.min} XP`}</span><button type="button" data-outfit-choose="${x.id}" ${locked?'disabled':''}>${prefs.outfit===x.id?'✓ Выбран':'Выбрать образ'}</button></div>`}).join('');
+  }
+  $('v3-reward-shelf').onclick=e=>{const b=e.target.closest('[data-outfit-choose]');if(!b)return;const x=outfits.find(x=>x.id===b.dataset.outfitChoose);if(!x||getXP()<x.min)return;prefs.outfit=x.id;save();renderOutfits();msg('Как тебе мой новый образ? Мы открыли его за твои настоящие занятия! ✨')};
+  $('v3-reward-idea').onclick=()=>{$('v3-reward-text').textContent=rewardIdeas[Math.floor(Math.random()*rewardIdeas.length)]};
+  document.querySelector('[data-page="rewards"]').addEventListener('click',renderOutfits);renderOutfits();
+
+  // Spotify only loads on explicit click. Trusted hosts only, no arbitrary user-provided iframe URL.
+  function spotifyEmbed(raw){let u;try{u=new URL(raw.trim())}catch{return null}if(!['open.spotify.com','play.spotify.com'].includes(u.hostname)||u.protocol!=='https:')return null;
+    const path=u.pathname.split('/').filter(Boolean);const idx=path[0]&&path[0].startsWith('intl-')?1:0;const type=path[idx],id=path[idx+1];
+    if(!['playlist','album','track','artist','episode','show'].includes(type)||!id||!/^[A-Za-z0-9]{10,60}$/.test(id))return null;
+    return `https://open.spotify.com/embed/${type}/${id}`;
+  }
+  function youtubeEmbed(raw){let u;try{u=new URL(raw.trim())}catch{return null}if(u.protocol!=='https:')return null;
+    const host=u.hostname.replace(/^www\./,'').replace(/^m\./,'');let id='',list='';
+    if(host==='youtu.be')id=u.pathname.slice(1).split('/')[0];
+    else if(['youtube.com','youtube-nocookie.com','music.youtube.com'].includes(host)){
+      const parts=u.pathname.split('/').filter(Boolean);
+      if(parts[0]==='watch')id=u.searchParams.get('v')||'';
+      else if(['shorts','live','embed'].includes(parts[0]))id=parts[1]||'';
+      list=u.searchParams.get('list')||'';
+    }else return null;
+    if(id&&!/^[a-zA-Z0-9_-]{11}$/.test(id))return null;
+    if(list&&!/^[a-zA-Z0-9_-]{8,80}$/.test(list))return null;
+    if(id)return 'https://www.youtube-nocookie.com/embed/'+id+(list?'?list='+encodeURIComponent(list):'');
+    if(list)return 'https://www.youtube-nocookie.com/embed/videoseries?list='+encodeURIComponent(list);
+    return null;
+  }
+  $('spotify-url').value=prefs.spotify||'';
+  $('youtube-url').value=prefs.youtube||'';
+  $('v3-spotify-play').onclick=()=>{
+    const raw=$('spotify-url').value;const src=spotifyEmbed(raw);if(!src){$('v3-spotify-box').textContent='Проверь ссылку Spotify на трек, плейлист, альбом или подкаст.';return}
+    prefs.spotify=raw.trim().slice(0,500);save();const box=$('v3-spotify-box');box.replaceChildren();const f=document.createElement('iframe');f.src=src;f.title='Spotify — официальный плеер';f.loading='lazy';f.allow='encrypted-media; fullscreen; picture-in-picture';f.referrerPolicy='strict-origin-when-cross-origin';f.height=152;box.appendChild(f);
+  };
+  $('v3-youtube-play').onclick=()=>{
+    const raw=$('youtube-url').value;const src=youtubeEmbed(raw);if(!src){$('v3-youtube-box').textContent='Нужна корректная ссылка на ролик или плейлист YouTube.';return}
+    prefs.youtube=raw.trim().slice(0,500);save();const box=$('v3-youtube-box');box.replaceChildren();const f=document.createElement('iframe');f.src=src;f.title='YouTube — встроенный плеер';f.loading='lazy';f.className='youtube';f.allow='accelerometer; gyroscope; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';box.appendChild(f);
+  };
+  // By default no ad SDK, no ads, no tracking. Only show actual configured sponsor offers in the future.
+  $('v3-sponsor-opt').checked=!!prefs.sponsors;
+  $('v3-sponsor-opt').onchange=e=>{prefs.sponsors=!!e.target.checked;save();$('v3-sponsor-area').innerHTML='<div class="partner-placeholder">Пока реальных партнёров нет. Реклама не показывается.</div>'};
+
+  // Location lookup is optional, on demand. OpenStreetMap Overpass data may be incomplete or rate limited.
+  const TYPES={
+    gym:{title:'Тренажёрные залы',query:'[leisure=fitness_centre];[leisure=sports_centre];[sport=fitness]',maps:'тренажерный зал'},
+    pool:{title:'Бассейны',query:'[leisure=swimming_pool];[sport=swimming]',maps:'бассейн'},
+    park:{title:'Парки',query:'[leisure=park];[leisure=garden]',maps:'парк'},
+    library:{title:'Библиотеки',query:'[amenity=library]',maps:'библиотека'}
+  };
+  let latestMapURL='';
+  $('v3-near-maps').onclick=()=>{if(latestMapURL)window.open(latestMapURL,'_blank','noopener,noreferrer')};
+  $('v3-city-search').onclick=()=>{const city=$('v3-city').value.trim();if(!city){say('Введи название города.');return}window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('fitness gym pool park library '+city),'_blank','noopener,noreferrer')};
+  const km=(a,b,c,d)=>{const r=Math.PI/180;const v=Math.sin((c-a)*r/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin((d-b)*r/2)**2;return 12742*Math.asin(Math.sqrt(v))};
+  const mapLink=(q,lat,lon)=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q+' near '+lat.toFixed(4)+','+lon.toFixed(4));
+  const osmLink=(lat,lon)=>'https://www.openstreetmap.org/?mlat='+lat.toFixed(6)+'&mlon='+lon.toFixed(6)+'#map=17/'+lat.toFixed(6)+'/'+lon.toFixed(6);
+  function geo(){return new Promise((res,rej)=>{if(!navigator.geolocation)return rej(new Error('Геолокация недоступна'));navigator.geolocation.getCurrentPosition(res,rej,{enableHighAccuracy:false,maximumAge:300000,timeout:10000})})}
+  function nearbyMarkup(items){$('v3-near-results').replaceChildren();for(const x of items){const a=document.createElement('a');a.className='near-venue';a.href=osmLink(x.lat,x.lon);a.target='_blank';a.rel='noopener noreferrer';const side=document.createElement('div');const b=document.createElement('b');b.textContent=x.name;const small=document.createElement('small');small.textContent=x.kind;side.append(b,small);const dist=document.createElement('span');dist.textContent=x.distance.toFixed(1)+' км ↗';a.append(side,dist);$('v3-near-results').appendChild(a)}}
+  document.querySelectorAll('[data-near]').forEach(b=>b.onclick=async()=>{
+    const type=TYPES[b.dataset.near];if(!type)return;
+    $('v3-near-title').textContent=type.title;
+    $('v3-near-results').replaceChildren();$('v3-near-maps').style.display='none';say('Определяем местоположение — разреши доступ, если согласен…');
+    let lat,lon;
+    try{const p=await geo();lat=p.coords.latitude;lon=p.coords.longitude}
+    catch(e){say('Не удалось получить местоположение. Включи геолокацию или разреши доступ сайту через HTTPS.');latestMapURL=''; // no invented user coordinates
+      $('v3-near-maps').style.display='none';return}
+    latestMapURL=mapLink(type.maps,lat,lon);$('v3-near-maps').style.display='inline-block';
+    say('Ищем рядом через OpenStreetMap. Это может занять несколько секунд…');
+    const tagPredicates=type.query.split(';').filter(Boolean);
+    const around=tagPredicates.map(tag=>`nwr(around:5000,${lat.toFixed(5)},${lon.toFixed(5)})${tag};`).join('');
+    const query=`[out:json][timeout:13];(${around});out center 35;`;
+    try{
+      const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),16000);
+      let res;
+      try{res=await fetch('https://overpass.kumi.systems/api/interpreter',{method:'POST',body:new URLSearchParams({data:query}),signal:abort.signal,mode:'cors'})}
+      finally{clearTimeout(timeout)}
+      if(!res.ok)throw new Error('Сервис недоступен');
+      const j=await res.json();const seen=new Set();const out=(j.elements||[]).map(e=>{
+        const la=e.lat??e.center?.lat,lo=e.lon??e.center?.lon;
+        const name=e.tags?.name||e.tags?.['name:ru']||'';
+        return {lat:la,lon:lo,name,kind:e.tags?.sport||e.tags?.leisure||e.tags?.amenity||'Место',distance:km(lat,lon,la,lo)}
+      }).filter(e=>Number.isFinite(e.distance)&&e.distance<=5&&e.name).sort((a,b)=>a.distance-b.distance).filter(e=>{const key=e.name.toLocaleLowerCase();if(seen.has(key))return false;seen.add(key);return true}).slice(0,7);
+      if(out.length){nearbyMarkup(out);say('Ближайшие варианты по открытой карте. Проверяй часы работы перед поездкой.')}
+      else say('В открытой базе нет подписанных мест в радиусе 5 км. Попробуй поиск на карте ↗');
+    }catch(e){say('Список не загрузился (сервис карт может быть занят). Нажми «Открыть больше мест на карте» ниже.')}
+  });
+  let promptEvent=null;
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptEvent=e;});
+  async function install(){if(promptEvent){promptEvent.prompt();try{await promptEvent.userChoice}catch{}promptEvent=null}else{
+    alert('Чтобы добавить ORAYMI на главный экран Samsung:\n1. Открой опубликованный HTTPS-сайт в Chrome или Samsung Internet.\n2. Нажми меню ⋮ браузера.\n3. Выбери «Установить приложение» или «Добавить на главный экран».\n\nПостоянный BUDDY поверх других приложений появится только в отдельном Android-приложении.');
+  }}
+  $('install-app').onclick=install;$('v3-install-settings').onclick=install;
+  if('serviceWorker' in navigator&&location.protocol==='https:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+  window.addEventListener('appinstalled',()=>{$('v3-install').style.display='none'});
+  // Refresh outfit unlocks after a saved session, without writing any tracking data.
+  document.querySelectorAll('[data-page="today"],[data-page="rewards"]').forEach(b=>b.addEventListener('click',renderOutfits));
+  window.addEventListener('storage',renderOutfits);
+})();
+</script>
+<script>
+// ORAYMI 4.0 local voice & companion layer. No API keys, trackers or third-party AI calls.
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const SETTINGS_KEY='oraymi_v4_preferences', V2='oraymi_local_v1';
+const get=(key,fallback)=>{try{const raw=JSON.parse(localStorage.getItem(key)||'null');return raw&&typeof raw==='object'?raw:fallback}catch{return fallback}};
+const defaults={speech:false,focus:false,hobbies:[],media:[]};
+let settings={...defaults,...get(SETTINGS_KEY,{})};
+if(!Array.isArray(settings.hobbies))settings.hobbies=[];if(!Array.isArray(settings.media))settings.media=[];
+const persist=()=>{try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));return true}catch{reply('Не удалось сохранить запись. Проверь доступ к хранилищу браузера.');return false}};
+const base=()=>get(V2,{sessions:[],active:null,moods:{},tasks:{}});
+const speechState=$('v4-voice-state');const command=$('v4-command');
+let speaking=false,recognizer=null,available=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+function sayText(text){if(!settings.speech||!('speechSynthesis'in window))return;
+  try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text.replace(/[✨💚🎯🌿🔈🎙⚡]/gu,''));u.lang='ru-RU';u.rate=.97;u.pitch=1.07;window.speechSynthesis.speak(u)}catch{}
+}
+function reply(text,voice=true){$('v4-answer').textContent=text;expand(true);if(voice)sayText(text)}
+function expand(show){const d=document.querySelector('.v4-command-deck');if(!d)return;d.classList.toggle('compact',!show);$('v4-expand').setAttribute('aria-expanded',String(show));$('v4-expand').textContent=show?'− Свернуть':'⋯ Команды'}
+$('v4-expand').onclick=()=>expand(document.querySelector('.v4-command-deck').classList.contains('compact'));
+function getActive(){return !!base().active}
+function getPaused(){const a=base().active;return !!(a&&Array.isArray(a.pauses)&&a.pauses.some(p=>p&&p.end==null))}
+function click(id){const el=$(id);if(el)el.click()}
+function showWorld(id){clickNav('world');if(id)setTimeout(()=>$(id)?.scrollIntoView({behavior:'smooth',block:'center'}),110)}
+function clickNav(name){document.querySelector('.navbtn[data-page="'+name+'"]')?.click()}
+function initiate(kind){const a=base().active;if(a){reply('У тебя уже идёт занятие. Сначала заверши его или поставь на паузу.');return}
+  const target=document.querySelector('[data-quick="'+kind+'"]');if(target){target.click();reply('Начала занятие. Береги свой ритм!')}else reply('Не могу начать это занятие сейчас.')}
+function dailyMessage(){const d=base(),today=new Date();const key=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+ const sessions=[...(Array.isArray(d.sessions)?d.sessions:[]),...(d.active?[d.active]:[])];const mins=sessions.reduce((sum,x)=>{if(!x||!Number.isFinite(x.start))return sum;const a=Math.max(x.start,new Date(key+'T00:00:00').getTime()),end=Math.min(Number.isFinite(x.end)?x.end:Date.now(),Date.now());const overlaps=Math.max(0,end-a);const paused=(x.pauses||[]).reduce((v,p)=>{if(!Number.isFinite(p.start))return v;return v+Math.max(0,Math.min(Number.isFinite(p.end)?p.end:Date.now(),end)-Math.max(p.start,a))},0);return sum+Math.max(0,overlaps-paused)},0);
+ const tasks=Array.isArray(d.tasks?.[key])?d.tasks[key]:[];return `Сегодня ты уделил занятиям примерно ${Math.floor(mins/60000)} минут, выполнил ${tasks.filter(t=>t.done).length} из ${tasks.length} дел. И отдых тоже считается важным.`;
+}
+function process(raw){const txt=String(raw||'').toLocaleLowerCase('ru-RU').trim().replace(/[!?.,]/g,'');if(!txt)return;command.value='';
+ if(/(заверш|законч|стоп таймер|конец занят)/.test(txt)){if(!getActive()){reply('Сейчас нет активного таймера. Всё спокойно.');return}click('stop-btn');reply('Занятие завершено и сохранено. Спасибо за усилие!');return}
+ if(/(пауза|приостанов|останови|остановить|поставь на паузу)/.test(txt)){if(!getActive()){reply('Сейчас таймер не запущен.');return}if(getPaused()){reply('Таймер уже на паузе. Можно отдохнуть.');return}click('pause-btn');reply('Поставила на паузу. Отдыхай столько, сколько нужно.');return}
+ if(/(продолж|возобнов|сними с паузы)/.test(txt)){if(!getActive()){reply('Сначала выбери занятие для старта.');return}if(!getPaused()){reply('Таймер уже идёт. Продолжай в своём темпе!');return}click('pause-btn');reply('Продолжаем! Время снова идёт.');return}
+ if(/(фокус|учёб|учеб|учить|учиться|обучени|занятие уч)/.test(txt)&&/(нач|запус|включ|старт|фокус)/.test(txt)){initiate('study');return}
+ if(/(спорт|трениров|зарядк)/.test(txt)&&/(нач|запус|включ|старт|трениров)/.test(txt)){initiate('sport');return}
+ if(/(проект|работ)/.test(txt)&&/(нач|запус|включ|старт)/.test(txt)){initiate('work');return}
+ if(/(перерыв|отдых)/.test(txt)&&/(нач|запус|включ|старт|перерыв)/.test(txt)){initiate('rest');return}
+ if(/(музык|спотифай|spotify|песн|плейлист)/.test(txt)){showWorld('v4-media-library');reply('Открыла медиатеку. Выбери музыку сам — без неожиданного автозапуска.');return}
+ if(/(видео|ютуб|youtube|ролик)/.test(txt)){showWorld('youtube-url');reply('Раздел видео открыт. Выбери интересный ролик.');return}
+ if(/(зал|бассейн|рядом|парк|найди место)/.test(txt)){clickNav('world');reply('Открыла раздел мест рядом. Геолокация включается только после твоего нажатия.');return}
+ if(/(хобби|увлечени)/.test(txt)){clickNav('today');setTimeout(()=>$('v4-hobby-name')?.scrollIntoView({behavior:'smooth',block:'center'}),100);reply('Хобби — часть твоей жизни, а не дополнительная обязанность. Добавь своё любимое занятие.');return}
+ if(/(как мой день|мой день|статистик|сколько сегодня|сколько времени)/.test(txt)){reply(dailyMessage());return}
+ if(/(груст|тяжел|тревож|плохо|устал|не могу)/.test(txt)){reply('Похоже, сейчас нелегко. Не нужно заставлять себя быть продуктивным. Можешь сделать перерыв, попить воды или обратиться за поддержкой к близкому человеку.');return}
+ if(/(привет|доброе|здравств)/.test(txt)){reply('Привет! Я BUDDY. Можно сказать «пауза», «продолжить», «завершить», «начни фокус» или «как мой день».');return}
+ if(/(помощ|команд|умеешь)/.test(txt)){reply('Я умею ставить таймер на паузу, продолжать, завершать, запускать фокус или тренировку, открывать музыку и показывать итоги дня.');return}
+ reply('Я пока понимаю короткие команды, а не любые вопросы. Попробуй «начни фокус», «пауза», «завершить», «музыка» или «как мой день?». Для свободного AI-диалога понадобится защищённый сервер.');
+}
+$('v4-command-form').addEventListener('submit',e=>{e.preventDefault();process(command.value)});
+document.querySelectorAll('[data-v4-cmd]').forEach(b=>b.addEventListener('click',()=>process(b.dataset.v4Cmd)));
+function micState(label,listening){speechState.textContent=label;speechState.classList.toggle('listening',!!listening);$('v4-mic').classList.toggle('listening',!!listening);$('v4-mic').setAttribute('aria-pressed',String(!!listening))}
+$('v4-mic').addEventListener('click',()=>{
+ if(!available){reply('В этом браузере голосовой ввод недоступен. Открой ORAYMI по HTTPS в Chrome и попробуй снова или напиши команду.');return}
+ if(recognizer){try{recognizer.stop()}catch{}return}
+ const Rec=window.SpeechRecognition||window.webkitSpeechRecognition;let r;
+ try{r=new Rec();r.lang='ru-RU';r.continuous=false;r.interimResults=false;r.maxAlternatives=1;
+  r.onresult=e=>{const found=e.results?.[0]?.[0]?.transcript||'';command.value=found;process(found)};
+  r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed')reply('Микрофон не разрешён. Разреши доступ сайту в настройках браузера.');else if(e.error==='no-speech')reply('Не услышала команду. Нажми 🎙 и попробуй ещё раз.');else reply('Не удалось распознать речь. Попробуй ещё раз или введи команду вручную.')};
+  r.onend=()=>{recognizer=null;micState('○ Микрофон выключен',false)};
+  recognizer=r;r.start();micState('● Слушаю',true);
+ }catch{recognizer=null;micState('○ Микрофон выключен',false);reply('Микрофон сейчас недоступен. Можно пользоваться текстовыми командами.')}
+});
+$('v4-speech-toggle').checked=!!settings.speech;$('v4-focus-toggle').checked=!!settings.focus;
+$('v4-speech-toggle').onchange=e=>{settings.speech=!!e.target.checked;persist();if(!settings.speech&&'speechSynthesis'in window)window.speechSynthesis.cancel();reply(settings.speech?'Могу отвечать голосом. Нажми на микрофон, если хочешь поговорить.':'Хорошо, буду отвечать текстом.',false)};
+function drawFocus(){document.body.classList.toggle('v4-focus-on',!!settings.focus&&getActive())}
+$('v4-focus-toggle').onchange=e=>{settings.focus=!!e.target.checked;persist();drawFocus();reply(settings.focus?'Бережный фокус включён. Пока идёт занятие, уберу часть отвлекающих карточек.':'Бережный фокус выключен.',false)};
+function makeHobby(name,kind){name=String(name||'').trim().slice(0,35);if(!name)return reply('Сначала напиши название хобби.',false);
+ if(settings.hobbies.length>=24)return reply('У тебя уже 24 хобби. Можешь удалить ненужное, чтобы добавить новое.',false);
+ if(settings.hobbies.some(x=>x.name.toLowerCase()===name.toLowerCase()))return reply('Такое хобби уже в списке.',false);
+ if(!['other','sport','study','rest','work','life'].includes(kind))kind='other';
+ settings.hobbies.push({id:'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,7),name,kind});persist();renderHobbies();reply('Добавила «'+name+'». Увлечения делают жизнь интереснее!',false)}
+$('v4-hobby-form').addEventListener('submit',e=>{e.preventDefault();makeHobby($('v4-hobby-name').value,$('v4-hobby-kind').value);$('v4-hobby-name').value='' });
+document.querySelectorAll('[data-v4-hobby-sample]').forEach(b=>b.addEventListener('click',()=>makeHobby(b.dataset.v4HobbySample,b.dataset.v4HobbyCat)));
+const kinds={work:'💻 Проект',study:'🧠 Учёба',sport:'💪 Движение',rest:'🌿 Отдых',life:'🎨 Творчество',other:'✨ Хобби'};
+function renderHobbies(){const box=$('v4-hobbies');box.replaceChildren();$('v4-hobby-count').textContent=settings.hobbies.length+' хобби';if(!settings.hobbies.length){const x=document.createElement('div');x.className='v4-empty';x.textContent='Здесь появятся твои увлечения. Добавь первое ↓';box.append(x);return}
+ for(const x of settings.hobbies){if(!x||typeof x.name!=='string')continue;const row=document.createElement('div');row.className='v4-hobby-item';const title=document.createElement('div');title.className='v4-hobby-title';title.textContent=x.name;const small=document.createElement('small');small.textContent=kinds[x.kind]||kinds.other;title.append(small);const play=document.createElement('button');play.type='button';play.className='v4-hobby-start';play.textContent='▶ Начать';play.onclick=()=>{
+  if(getActive()){reply('Сначала заверши предыдущее занятие, затем запускай хобби.',false);return}
+  click('start-btn');const cat=document.querySelector('.cat-choice[data-cat="'+x.kind+'"]');cat?.click();const field=$('activity-title');if(field)field.value=x.name;click('modal-confirm');drawFocus();reply('Запустила «'+x.name+'». Получай удовольствие от процесса!',false);
+ };const del=document.createElement('button');del.type='button';del.className='v4-del';del.textContent='×';del.setAttribute('aria-label','Удалить хобби '+x.name);del.onclick=()=>{settings.hobbies=settings.hobbies.filter(y=>y.id!==x.id);persist();renderHobbies()};row.append(title,play,del);box.append(row)}
+}
+function provider(raw){let u;try{u=new URL(raw.trim())}catch{return null}if(u.protocol!=='https:')return null;
+ const host=u.hostname.toLowerCase().replace(/^(www\.|m\.)/,'');
+ if(host==='open.spotify.com'||host==='play.spotify.com'){const seg=u.pathname.split('/').filter(Boolean);const idx=seg[0]?.startsWith('intl-')?1:0;if(!['track','playlist','album','episode','show','artist'].includes(seg[idx])||!/^[a-zA-Z0-9]{10,60}$/.test(seg[idx+1]||''))return null;return {type:'spotify',url:'https://open.spotify.com/'+seg[idx]+'/'+seg[idx+1]}}
+ if(host==='youtu.be'){const id=u.pathname.split('/')[1];if(!/^[\w-]{11}$/.test(id||''))return null;return {type:'youtube',url:'https://www.youtube.com/watch?v='+id}}
+ if(['youtube.com','music.youtube.com'].includes(host)){
+ const seg=u.pathname.split('/').filter(Boolean);let id=seg[0]==='watch'?u.searchParams.get('v'):['shorts','live','embed'].includes(seg[0])?seg[1]:'';
+ const list=u.searchParams.get('list');if(id&&/^[\w-]{11}$/.test(id))return {type:'youtube',url:'https://www.youtube.com/watch?v='+id};if(list&&/^[\w-]{8,80}$/.test(list))return {type:'youtube',url:'https://www.youtube.com/playlist?list='+encodeURIComponent(list)}
+ }
+ return null;
+}
+$('v4-media-form').addEventListener('submit',e=>{e.preventDefault();const name=$('v4-media-name').value.trim().slice(0,55);const info=provider($('v4-media-url').value);if(!name||!info)return reply('Нужна корректная ссылка на трек или плейлист Spotify либо видео/плейлист YouTube.',false);if(settings.media.length>=35)return reply('Достигнут лимит 35 сохранённых ссылок.',false);
+ if(settings.media.some(x=>x.url===info.url))return reply('Эта ссылка уже сохранена.',false);
+ settings.media.unshift({id:'m'+Date.now().toString(36)+Math.random().toString(36).slice(2,7),name,url:info.url,type:info.type});persist();$('v4-media-name').value='';$('v4-media-url').value='';renderMedia();reply('Сохранила «'+name+'» в твоей медиатеке.',false)
+});
+function playMedia(x){const info=provider(x.url);if(!info)return reply('Ссылка больше не поддерживается. Добавь новую.',false);
+ if(info.type==='spotify'){$('spotify-url').value=info.url;click('v3-spotify-play');$('v3-spotify-box').scrollIntoView({behavior:'smooth',block:'center'})}
+ else {$('youtube-url').value=info.url;click('v3-youtube-play');$('v3-youtube-box').scrollIntoView({behavior:'smooth',block:'center'})}
+ reply('Открыла выбранный плеер. Для воспроизведения нажми Play внутри Spotify или YouTube.',false);
+}
+function renderMedia(){const box=$('v4-media-list');box.replaceChildren();if(!settings.media.length){const e=document.createElement('div');e.className='v4-empty';e.textContent='Пока пусто — сохрани музыку или видео, чтобы BUDDY всё собрал в одном месте.';box.append(e);return}
+ for(const x of settings.media){const info=provider(x.url);if(!info)continue;const row=document.createElement('div');row.className='v4-media-item';const emoji=document.createElement('span');emoji.className='v4-media-provider';emoji.textContent=info.type==='spotify'?'🟢':'🔴';const text=document.createElement('div');text.className='v4-media-name';text.textContent=x.name;const hint=document.createElement('small');hint.textContent=info.type==='spotify'?'Spotify':'YouTube';text.append(hint);
+ const play=document.createElement('button');play.className='v4-media-play';play.type='button';play.textContent='▶';play.setAttribute('aria-label','Открыть плеер '+x.name);play.onclick=()=>playMedia(x);
+ const ext=document.createElement('a');ext.href=info.url;ext.target='_blank';ext.rel='noopener noreferrer';ext.className='small-btn';ext.textContent='↗';ext.setAttribute('aria-label','Открыть в приложении '+x.name);
+ const del=document.createElement('button');del.className='v4-del';del.type='button';del.textContent='×';del.setAttribute('aria-label','Удалить ссылку '+x.name);del.onclick=()=>{settings.media=settings.media.filter(y=>y.id!==x.id);persist();renderMedia()};row.append(emoji,text,play,ext,del);box.append(row)}
+}
+// Existing tracker owns timer state; the observer only toggles distraction reduction.
+const orbit=$('orb-label');if(orbit&&window.MutationObserver){const mo=new MutationObserver(drawFocus);mo.observe($('pause-btn'),{attributes:true,attributeFilter:['class']})}
+drawFocus();renderHobbies();renderMedia();
+window.addEventListener('storage',e=>{if(e.key===SETTINGS_KEY){settings={...defaults,...get(SETTINGS_KEY,{})};renderHobbies();renderMedia();drawFocus()}if(e.key===V2)drawFocus()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&recognizer){try{recognizer.stop()}catch{}}if(!document.hidden)drawFocus()});
+})();
+</script>
+</body>
+</html>
